@@ -454,6 +454,7 @@
 				26A99E7618B8528800794A5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		26A99E7718B8528800794A5C /* Build configuration list for PBXNativeTarget "PulsingDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +463,7 @@
 				26A99E7918B8528800794A5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -16,7 +16,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     PDViewController *PDView = [[PDViewController alloc] init];
-    [self.window addSubview:PDView];
+    [self.window addSubview:PDView.view];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

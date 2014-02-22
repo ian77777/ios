@@ -24,46 +24,25 @@
         self.opacity = 0;
         
         // default
-        self.radius = 60;
-        self.animationDuration = 3;
-        self.pulseInterval = 0;
+        self.radius = 160;
+        self.animationDuration = 2.1;
         self.backgroundColor = [[UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1] CGColor];
+        CGFloat diameter = self.radius * 2;
+        self.bounds = CGRectMake(0, 0, diameter, diameter);
+        self.cornerRadius = self.radius;
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-            
-            [self setupAnimationGroup];
-            
-            if(self.pulseInterval != INFINITY) {
-                
-                dispatch_async(dispatch_get_main_queue(), ^(void) {
-                    
-                    [self addAnimation:self.animationGroup forKey:@"pulse"];
-                });
-            }
-        });
+        [self setupAnimationGroup];
+        [self addAnimation:self.animationGroup forKey:@"pulse"];
     }
     return self;
 }
 
-- (void)setRadius:(CGFloat)radius {
-    
-    _radius = radius;
-    
-    CGPoint tempPos = self.position;
-    
-    CGFloat diameter = self.radius * 2;
-    
-    self.bounds = CGRectMake(0, 0, diameter, diameter);
-    self.cornerRadius = self.radius;
-    self.position = tempPos;
-}
-
 - (void)setupAnimationGroup {
     
-    CAMediaTimingFunction *defaultCurve = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
+    CAMediaTimingFunction *defaultCurve = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     
     self.animationGroup = [CAAnimationGroup animation];
-    self.animationGroup.duration = self.animationDuration + self.pulseInterval;
+    self.animationGroup.duration = self.animationDuration;
     self.animationGroup.repeatCount = INFINITY;
     self.animationGroup.removedOnCompletion = NO;
     self.animationGroup.timingFunction = defaultCurve;
