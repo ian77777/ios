@@ -26,7 +26,7 @@
         // default
         self.radius = 60;
         self.animationDuration = 3;
-        self.pulseInterval = INFINITY;
+        self.pulseInterval = 0;
         self.backgroundColor = [[UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1] CGColor];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
