@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		265FBE5F186E8895003CD888 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 265FBE5E186E8895003CD888 /* Reveal.framework */; };
 		A4EA8A36182E3C3B0027DC23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4EA8A35182E3C3B0027DC23 /* Foundation.framework */; };
 		A4EA8A38182E3C3B0027DC23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4EA8A37182E3C3B0027DC23 /* CoreGraphics.framework */; };
 		A4EA8A3A182E3C3B0027DC23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4EA8A39182E3C3B0027DC23 /* UIKit.framework */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		265FBE5E186E8895003CD888 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 		A4EA8A32182E3C3B0027DC23 /* Alipay About.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alipay About.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EA8A35182E3C3B0027DC23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A4EA8A37182E3C3B0027DC23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -70,6 +72,7 @@
 				A4EA8A38182E3C3B0027DC23 /* CoreGraphics.framework in Frameworks */,
 				A4EA8A3A182E3C3B0027DC23 /* UIKit.framework in Frameworks */,
 				A4EA8A36182E3C3B0027DC23 /* Foundation.framework in Frameworks */,
+				265FBE5F186E8895003CD888 /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +111,7 @@
 		A4EA8A34182E3C3B0027DC23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				265FBE5E186E8895003CD888 /* Reveal.framework */,
 				A4EA8A35182E3C3B0027DC23 /* Foundation.framework */,
 				A4EA8A37182E3C3B0027DC23 /* CoreGraphics.framework */,
 				A4EA8A39182E3C3B0027DC23 /* UIKit.framework */,
@@ -392,6 +396,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Alipay About/Alipay About-Prefix.pch";
 				INFOPLIST_FILE = "Alipay About/Alipay About-Info.plist";
@@ -405,6 +413,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Alipay About/Alipay About-Prefix.pch";
 				INFOPLIST_FILE = "Alipay About/Alipay About-Info.plist";
@@ -474,6 +486,7 @@
 				A4EA8A60182E3C3B0027DC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A4EA8A61182E3C3B0027DC23 /* Build configuration list for PBXNativeTarget "Alipay AboutTests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +495,7 @@
 				A4EA8A63182E3C3B0027DC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
