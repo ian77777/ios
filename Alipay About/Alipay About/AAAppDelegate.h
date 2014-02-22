@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AAAboutViewController.h"
 
 @interface AAAppDelegate : UIResponder <UIApplicationDelegate>
 

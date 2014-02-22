@@ -1,23 +1,26 @@
 //
-//  AAAppDelegate.m
-//  Alipay About
+//  YYYAppDelegate.m
+//  scrollNotice
 //
-//  Created by yukai44444 on 13-11-9.
+//  Created by yukai44444 on 13-11-25.
 //  Copyright (c) 2013年 yukai44444. All rights reserved.
 //
 
-#import "AAAppDelegate.h"
+#import "YYYAppDelegate.h"
 
-@implementation AAAppDelegate
+
+@implementation YYYAppDelegate
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    AAAboutViewController *about = [[AAAboutViewController alloc] init];
     
-    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:about];
-    self.window.rootViewController = navigation;
+    YYYScrollNotice *notice = [[YYYScrollNotice alloc] initWithFrame:CGRectMake(0, 40, 320, 40) withBgColor:[UIColor blueColor]];
+
+    [notice rollLabelTitle:@"这是一个可以滚动的Label" textcolor:[UIColor redColor] font:[UIFont systemFontOfSize:24] middleSpace:30];
+    [self.window addSubview:notice];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

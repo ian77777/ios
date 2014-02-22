@@ -21,6 +21,7 @@
 		A413A0EC1820B0AE00F12348 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A413A0CE1820B0AB00F12348 /* UIKit.framework */; };
 		A413A0F41820B0AE00F12348 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A413A0F21820B0AE00F12348 /* InfoPlist.strings */; };
 		A413A0F61820B0AE00F12348 /* Hello_WorldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A413A0F51820B0AE00F12348 /* Hello_WorldTests.m */; };
+		A4593C67186E8AFE007B0502 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4593C66186E8AFE007B0502 /* Reveal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A413A0F11820B0AE00F12348 /* Hello WorldTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hello WorldTests-Info.plist"; sourceTree = "<group>"; };
 		A413A0F31820B0AE00F12348 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A413A0F51820B0AE00F12348 /* Hello_WorldTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hello_WorldTests.m; sourceTree = "<group>"; };
+		A4593C66186E8AFE007B0502 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				A413A0CD1820B0AB00F12348 /* CoreGraphics.framework in Frameworks */,
 				A413A0CF1820B0AB00F12348 /* UIKit.framework in Frameworks */,
 				A413A0CB1820B0AB00F12348 /* Foundation.framework in Frameworks */,
+				A4593C67186E8AFE007B0502 /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +104,7 @@
 		A413A0C91820B0AB00F12348 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A4593C66186E8AFE007B0502 /* Reveal.framework */,
 				A413A0CA1820B0AB00F12348 /* Foundation.framework */,
 				A413A0CC1820B0AB00F12348 /* CoreGraphics.framework */,
 				A413A0CE1820B0AB00F12348 /* UIKit.framework */,
@@ -379,9 +383,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hello World/Hello World-Prefix.pch";
 				INFOPLIST_FILE = "Hello World/Hello World-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -392,9 +401,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hello World/Hello World-Prefix.pch";
 				INFOPLIST_FILE = "Hello World/Hello World-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -461,6 +475,7 @@
 				A413A0FB1820B0AE00F12348 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A413A0FC1820B0AE00F12348 /* Build configuration list for PBXNativeTarget "Hello WorldTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +484,7 @@
 				A413A0FE1820B0AE00F12348 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

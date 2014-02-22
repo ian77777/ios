@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AAFeedbackViewController : UIViewController <UITextFieldDelegate>
+@interface AAFeedbackViewController : UIViewController
 
 @property (strong, nonatomic) UITextField *textField;
 @property (strong, nonatomic) UITextView *textView;

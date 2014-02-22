@@ -10,7 +10,7 @@
 
 @class AAFeedbackViewController;
 
-@interface AAAboutViewController : UITableViewController
+@interface AAAboutViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (copy, nonatomic) NSArray *tableCells;
 @property (strong, nonatomic) AAFeedbackViewController *feedbackController;

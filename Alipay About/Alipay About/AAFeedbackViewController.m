@@ -19,6 +19,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title = @"反馈";
+        self.view.backgroundColor = [UIColor colorWithRed:0xf3/255.0f green:0xf3/255.0f blue:0xf3/255.0f alpha:1];
+        if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
+        {
+            self.edgesForExtendedLayout = UIRectEdgeNone;
+        }
     }
     return self;
 }
@@ -29,17 +35,27 @@
 	// Do any additional setup after loading the view.
     self.textField = [[UITextField alloc]
                       initWithFrame:
-                      CGRectMake(10, 30,300, 30)];
-    self.textField.delegate = self;
-    self.textField.borderStyle = UITextBorderStyleRoundedRect;
-    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 80, 300, 30)];
+                      CGRectMake(20, 28, self.view.frame.size.width - 40, 30)];
+    self.textField.borderStyle = UITextBorderStyleNone;
+    self.textField.layer.cornerRadius = 4.0f;
+    self.textField.layer.borderWidth = 1.0f;
+    self.textField.layer.borderColor = [UIColor grayColor].CGColor;
+    self.textField.font = [UIFont systemFontOfSize:14.0f];
+    self.textField.placeholder = @"输入手机号码";
     [self.view addSubview:self.textField];
+    
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(20, self.textField.frame.origin.y + self.textField.frame.size.height + 28, self.view.frame.size.width - 40, 136)];
+    self.textView.layer.cornerRadius = 4.0f;
+    self.textView.layer.borderWidth = 1.0f;
+    self.textView.layer.borderColor = [UIColor grayColor].CGColor;
+    self.textView.layer.masksToBounds = YES;
+    self.textView.font = [UIFont systemFontOfSize:14.0f];
     [self.view addSubview:self.textView];
     
     // 初始化一个圆角样式的默认按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     // 设置按钮的位置与大小
-    button.frame = CGRectMake(110.0f, 200.0f, 100.0f, 30.0f);
+    button.frame = CGRectMake(self.view.bounds.size.width/2 - 140, self.textView.frame.origin.y + self.textView.frame.size.height + 28, 280, 40);
     
     // 设置目标，行为与控件事件。
     // 更多说明看后文
