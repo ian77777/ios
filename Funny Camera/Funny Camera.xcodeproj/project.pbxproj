@@ -19,6 +19,7 @@
 		267E3D2F18DA974900D9911A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267E3D1718DA974900D9911A /* UIKit.framework */; };
 		267E3D3718DA974900D9911A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 267E3D3518DA974900D9911A /* InfoPlist.strings */; };
 		267E3D3918DA974900D9911A /* Funny_CameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 267E3D3818DA974900D9911A /* Funny_CameraTests.m */; };
+		A4AC435B18DA9F900035A3FE /* YKFCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC435A18DA9F900035A3FE /* YKFCViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		267E3D3418DA974900D9911A /* Funny CameraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Funny CameraTests-Info.plist"; sourceTree = "<group>"; };
 		267E3D3618DA974900D9911A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		267E3D3818DA974900D9911A /* Funny_CameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Funny_CameraTests.m; sourceTree = "<group>"; };
+		A4AC435918DA9F900035A3FE /* YKFCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKFCViewController.h; sourceTree = "<group>"; };
+		A4AC435A18DA9F900035A3FE /* YKFCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKFCViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				267E3D2318DA974900D9911A /* YKFCAppDelegate.m */,
 				267E3D2518DA974900D9911A /* Images.xcassets */,
 				267E3D1A18DA974900D9911A /* Supporting Files */,
+				A4AC435918DA9F900035A3FE /* YKFCViewController.h */,
+				A4AC435A18DA9F900035A3FE /* YKFCViewController.m */,
 			);
 			path = "Funny Camera";
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4AC435B18DA9F900035A3FE /* YKFCViewController.m in Sources */,
 				267E3D2018DA974900D9911A /* main.m in Sources */,
 				267E3D2418DA974900D9911A /* YKFCAppDelegate.m in Sources */,
 			);
@@ -440,6 +446,7 @@
 				267E3D3E18DA974900D9911A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		267E3D3F18DA974900D9911A /* Build configuration list for PBXNativeTarget "Funny CameraTests" */ = {
 			isa = XCConfigurationList;
@@ -448,6 +455,7 @@
 				267E3D4118DA974900D9911A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

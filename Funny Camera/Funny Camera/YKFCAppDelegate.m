@@ -7,6 +7,7 @@
 //
 
 #import "YKFCAppDelegate.h"
+#import "YKFCViewController.h"
 
 @implementation YKFCAppDelegate
 
@@ -14,6 +15,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    self.viewController = [[YKFCViewController alloc] init];
+    self.window.rootViewController = self.viewController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

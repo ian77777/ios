@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class YKFCViewController;
+
 @interface YKFCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) YKFCViewController *viewController;
 
 @end
