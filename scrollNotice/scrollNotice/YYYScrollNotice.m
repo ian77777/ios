@@ -16,6 +16,19 @@
     if (self) {
         // Initialization code
         self.backgroundColor = bgcolor;
+        
+        NSString *a = nil;
+        NSString *b = @"";
+        if (a) {
+            NSLog(@"是aaaaaa");
+        } else {
+            NSLog(@"不是aaaaaa");
+        }
+        if (b) {
+            NSLog(@"是bbbbb");
+        } else {
+            NSLog(@"不是bbbbb");
+        }
     }
     return self;
 }

@@ -1,22 +1,24 @@
 //
-//  PDAppDelegate.m
-//  PulsingDemo
+//  ALPEFAppDelegate.m
+//  Electronic Fence
 //
-//  Created by 凯子 on 14-2-22.
-//  Copyright (c) 2014年 凯子. All rights reserved.
+//  Created by yukai44444 on 14-2-26.
+//  Copyright (c) 2014年 Alipay. All rights reserved.
 //
 
-#import "PDAppDelegate.h"
-#import "PDViewController.h"
+#import "ALPEFAppDelegate.h"
 
-@implementation PDAppDelegate
+@implementation ALPEFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    PDViewController *PDView = [[PDViewController alloc] init];
-    [self.window addSubview:PDView.view];
+    ALPEFIndexViewController *index = [[ALPEFIndexViewController alloc] init];
+    
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:index];
+    self.window.rootViewController = navigation;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

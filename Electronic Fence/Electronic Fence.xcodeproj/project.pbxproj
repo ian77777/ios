@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A42EF05818BDC02700DDA6F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A42EF05718BDC02700DDA6F0 /* Foundation.framework */; };
+		A42EF05A18BDC02700DDA6F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A42EF05918BDC02700DDA6F0 /* CoreGraphics.framework */; };
+		A42EF05C18BDC02700DDA6F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A42EF05B18BDC02700DDA6F0 /* UIKit.framework */; };
+		A42EF06218BDC02700DDA6F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A42EF06018BDC02700DDA6F0 /* InfoPlist.strings */; };
+		A42EF06418BDC02700DDA6F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A42EF06318BDC02700DDA6F0 /* main.m */; };
+		A42EF06818BDC02700DDA6F0 /* ALPEFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A42EF06718BDC02700DDA6F0 /* ALPEFAppDelegate.m */; };
+		A42EF06A18BDC02700DDA6F0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A42EF06918BDC02700DDA6F0 /* Images.xcassets */; };
+		A42EF07118BDC02700DDA6F0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A42EF07018BDC02700DDA6F0 /* XCTest.framework */; };
+		A42EF07218BDC02700DDA6F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A42EF05718BDC02700DDA6F0 /* Foundation.framework */; };
+		A42EF07318BDC02700DDA6F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A42EF05B18BDC02700DDA6F0 /* UIKit.framework */; };
+		A42EF07B18BDC02700DDA6F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A42EF07918BDC02700DDA6F0 /* InfoPlist.strings */; };
+		A42EF07D18BDC02700DDA6F0 /* Electronic_FenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A42EF07C18BDC02700DDA6F0 /* Electronic_FenceTests.m */; };
+		A42EF08818BDC8D100DDA6F0 /* ALPEFIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A42EF08718BDC8D100DDA6F0 /* ALPEFIndexViewController.m */; };
+		A4DEADD818BEE83D000747C2 /* ALPEFCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DEADD718BEE83D000747C2 /* ALPEFCollectViewController.m */; };
+		A4DEADE118BEEAA6000747C2 /* AAPayBottomBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4DEADDA18BEEAA6000747C2 /* AAPayBottomBg@2x.png */; };
+		A4DEADE218BEEAA6000747C2 /* AAPayCollectAllMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4DEADDB18BEEAA6000747C2 /* AAPayCollectAllMusic.mp3 */; };
+		A4DEADE418BEEAA6000747C2 /* AAPayUserDisplay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4DEADDD18BEEAA6000747C2 /* AAPayUserDisplay.mp3 */; };
+		A4DEADE518BEEAA6000747C2 /* lbs_wave.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4DEADDE18BEEAA6000747C2 /* lbs_wave.mp3 */; };
+		A4DEADE618BEEAA6000747C2 /* lbs_wave.png in Resources */ = {isa = PBXBuildFile; fileRef = A4DEADDF18BEEAA6000747C2 /* lbs_wave.png */; };
+		A4DEADE718BEEAA6000747C2 /* lbs_wave@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4DEADE018BEEAA6000747C2 /* lbs_wave@2x.png */; };
+		A4DEADEE18BF27F1000747C2 /* AAPaySeach@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4DEADED18BF27F1000747C2 /* AAPaySeach@2x.png */; };
+		A4DEADF118BF2E30000747C2 /* ALPEFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DEADF018BF2E30000747C2 /* ALPEFViewController.m */; };
+		A4DEADF318BF2EF8000747C2 /* sky@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4DEADF218BF2EF8000747C2 /* sky@2x.png */; };
+		A4DEAE1018C0304E000747C2 /* MagicFieldPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DEADFA18C0304E000747C2 /* MagicFieldPopView.m */; };
+		A4DEAE1118C0304E000747C2 /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DEADFC18C0304E000747C2 /* MarqueeLabel.m */; };
+		A4DEAE1218C0304E000747C2 /* PopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DEADFE18C0304E000747C2 /* PopBar.m */; };
+		A4DEAE1318C0304E000747C2 /* PopLoadingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DEAE0018C0304E000747C2 /* PopLoadingBar.m */; };
+		A4DEAE1418C0304E000747C2 /* PopPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DEAE0218C0304E000747C2 /* PopPanel.m */; };
+		A4DEAE1518C0304E000747C2 /* WifiCertifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DEAE0418C0304E000747C2 /* WifiCertifyView.m */; };
+		A4DEAE1618C0304E000747C2 /* WifiCertifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DEAE0618C0304E000747C2 /* WifiCertifyViewController.m */; };
+		A4DEAE1718C0304E000747C2 /* WifiFailureView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DEAE0818C0304E000747C2 /* WifiFailureView.m */; };
+		A4DEAE1818C0304E000747C2 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DEAE0B18C0304E000747C2 /* UIColor+HexString.m */; };
+		A4DEAE1918C0304E000747C2 /* UIScrollView+TouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DEAE0D18C0304E000747C2 /* UIScrollView+TouchEvent.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A42EF07418BDC02700DDA6F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A42EF04C18BDC02700DDA6F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A42EF05318BDC02700DDA6F0;
+			remoteInfo = "Electronic Fence";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A42EF05418BDC02700DDA6F0 /* Electronic Fence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Electronic Fence.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A42EF05718BDC02700DDA6F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A42EF05918BDC02700DDA6F0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A42EF05B18BDC02700DDA6F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A42EF05F18BDC02700DDA6F0 /* Electronic Fence-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Electronic Fence-Info.plist"; sourceTree = "<group>"; };
+		A42EF06118BDC02700DDA6F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A42EF06318BDC02700DDA6F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A42EF06518BDC02700DDA6F0 /* Electronic Fence-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Electronic Fence-Prefix.pch"; sourceTree = "<group>"; };
+		A42EF06618BDC02700DDA6F0 /* ALPEFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALPEFAppDelegate.h; sourceTree = "<group>"; };
+		A42EF06718BDC02700DDA6F0 /* ALPEFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALPEFAppDelegate.m; sourceTree = "<group>"; };
+		A42EF06918BDC02700DDA6F0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A42EF06F18BDC02700DDA6F0 /* Electronic FenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Electronic FenceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A42EF07018BDC02700DDA6F0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A42EF07818BDC02700DDA6F0 /* Electronic FenceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Electronic FenceTests-Info.plist"; sourceTree = "<group>"; };
+		A42EF07A18BDC02700DDA6F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A42EF07C18BDC02700DDA6F0 /* Electronic_FenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Electronic_FenceTests.m; sourceTree = "<group>"; };
+		A42EF08618BDC8D100DDA6F0 /* ALPEFIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPEFIndexViewController.h; sourceTree = "<group>"; };
+		A42EF08718BDC8D100DDA6F0 /* ALPEFIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPEFIndexViewController.m; sourceTree = "<group>"; };
+		A4DEADD618BEE83D000747C2 /* ALPEFCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPEFCollectViewController.h; sourceTree = "<group>"; };
+		A4DEADD718BEE83D000747C2 /* ALPEFCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPEFCollectViewController.m; sourceTree = "<group>"; };
+		A4DEADDA18BEEAA6000747C2 /* AAPayBottomBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AAPayBottomBg@2x.png"; sourceTree = "<group>"; };
+		A4DEADDB18BEEAA6000747C2 /* AAPayCollectAllMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AAPayCollectAllMusic.mp3; sourceTree = "<group>"; };
+		A4DEADDD18BEEAA6000747C2 /* AAPayUserDisplay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AAPayUserDisplay.mp3; sourceTree = "<group>"; };
+		A4DEADDE18BEEAA6000747C2 /* lbs_wave.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lbs_wave.mp3; sourceTree = "<group>"; };
+		A4DEADDF18BEEAA6000747C2 /* lbs_wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lbs_wave.png; sourceTree = "<group>"; };
+		A4DEADE018BEEAA6000747C2 /* lbs_wave@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lbs_wave@2x.png"; sourceTree = "<group>"; };
+		A4DEADEB18BF1D33000747C2 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
+		A4DEADED18BF27F1000747C2 /* AAPaySeach@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AAPaySeach@2x.png"; sourceTree = "<group>"; };
+		A4DEADEF18BF2E30000747C2 /* ALPEFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALPEFViewController.h; sourceTree = "<group>"; };
+		A4DEADF018BF2E30000747C2 /* ALPEFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALPEFViewController.m; sourceTree = "<group>"; };
+		A4DEADF218BF2EF8000747C2 /* sky@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sky@2x.png"; sourceTree = "<group>"; };
+		A4DEADF918C0304E000747C2 /* MagicFieldPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicFieldPopView.h; sourceTree = "<group>"; };
+		A4DEADFA18C0304E000747C2 /* MagicFieldPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicFieldPopView.m; sourceTree = "<group>"; };
+		A4DEADFB18C0304E000747C2 /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
+		A4DEADFC18C0304E000747C2 /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
+		A4DEADFD18C0304E000747C2 /* PopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopBar.h; sourceTree = "<group>"; };
+		A4DEADFE18C0304E000747C2 /* PopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopBar.m; sourceTree = "<group>"; };
+		A4DEADFF18C0304E000747C2 /* PopLoadingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopLoadingBar.h; sourceTree = "<group>"; };
+		A4DEAE0018C0304E000747C2 /* PopLoadingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopLoadingBar.m; sourceTree = "<group>"; };
+		A4DEAE0118C0304E000747C2 /* PopPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopPanel.h; sourceTree = "<group>"; };
+		A4DEAE0218C0304E000747C2 /* PopPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopPanel.m; sourceTree = "<group>"; };
+		A4DEAE0318C0304E000747C2 /* WifiCertifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiCertifyView.h; sourceTree = "<group>"; };
+		A4DEAE0418C0304E000747C2 /* WifiCertifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiCertifyView.m; sourceTree = "<group>"; };
+		A4DEAE0518C0304E000747C2 /* WifiCertifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiCertifyViewController.h; sourceTree = "<group>"; };
+		A4DEAE0618C0304E000747C2 /* WifiCertifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiCertifyViewController.m; sourceTree = "<group>"; };
+		A4DEAE0718C0304E000747C2 /* WifiFailureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiFailureView.h; sourceTree = "<group>"; };
+		A4DEAE0818C0304E000747C2 /* WifiFailureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiFailureView.m; sourceTree = "<group>"; };
+		A4DEAE0A18C0304E000747C2 /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
+		A4DEAE0B18C0304E000747C2 /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
+		A4DEAE0C18C0304E000747C2 /* UIScrollView+TouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TouchEvent.h"; sourceTree = "<group>"; };
+		A4DEAE0D18C0304E000747C2 /* UIScrollView+TouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TouchEvent.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A42EF05118BDC02700DDA6F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A42EF05A18BDC02700DDA6F0 /* CoreGraphics.framework in Frameworks */,
+				A42EF05C18BDC02700DDA6F0 /* UIKit.framework in Frameworks */,
+				A42EF05818BDC02700DDA6F0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A42EF06C18BDC02700DDA6F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A42EF07118BDC02700DDA6F0 /* XCTest.framework in Frameworks */,
+				A42EF07318BDC02700DDA6F0 /* UIKit.framework in Frameworks */,
+				A42EF07218BDC02700DDA6F0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A42EF04B18BDC02700DDA6F0 = {
+			isa = PBXGroup;
+			children = (
+				A4DEADEB18BF1D33000747C2 /* Reveal.framework */,
+				A42EF05D18BDC02700DDA6F0 /* Electronic Fence */,
+				A42EF07618BDC02700DDA6F0 /* Electronic FenceTests */,
+				A42EF05618BDC02700DDA6F0 /* Frameworks */,
+				A42EF05518BDC02700DDA6F0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A42EF05518BDC02700DDA6F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A42EF05418BDC02700DDA6F0 /* Electronic Fence.app */,
+				A42EF06F18BDC02700DDA6F0 /* Electronic FenceTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A42EF05618BDC02700DDA6F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A42EF05718BDC02700DDA6F0 /* Foundation.framework */,
+				A42EF05918BDC02700DDA6F0 /* CoreGraphics.framework */,
+				A42EF05B18BDC02700DDA6F0 /* UIKit.framework */,
+				A42EF07018BDC02700DDA6F0 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A42EF05D18BDC02700DDA6F0 /* Electronic Fence */ = {
+			isa = PBXGroup;
+			children = (
+				A4DEADF418C0304E000747C2 /* Controllers */,
+				A4DEAE0918C0304E000747C2 /* Utils */,
+				A4DEADD918BEEAA6000747C2 /* resources */,
+				A42EF06618BDC02700DDA6F0 /* ALPEFAppDelegate.h */,
+				A42EF06718BDC02700DDA6F0 /* ALPEFAppDelegate.m */,
+				A42EF06918BDC02700DDA6F0 /* Images.xcassets */,
+				A42EF05E18BDC02700DDA6F0 /* Supporting Files */,
+				A42EF08618BDC8D100DDA6F0 /* ALPEFIndexViewController.h */,
+				A42EF08718BDC8D100DDA6F0 /* ALPEFIndexViewController.m */,
+				A4DEADD618BEE83D000747C2 /* ALPEFCollectViewController.h */,
+				A4DEADD718BEE83D000747C2 /* ALPEFCollectViewController.m */,
+				A4DEADEF18BF2E30000747C2 /* ALPEFViewController.h */,
+				A4DEADF018BF2E30000747C2 /* ALPEFViewController.m */,
+			);
+			path = "Electronic Fence";
+			sourceTree = "<group>";
+		};
+		A42EF05E18BDC02700DDA6F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A42EF05F18BDC02700DDA6F0 /* Electronic Fence-Info.plist */,
+				A42EF06018BDC02700DDA6F0 /* InfoPlist.strings */,
+				A42EF06318BDC02700DDA6F0 /* main.m */,
+				A42EF06518BDC02700DDA6F0 /* Electronic Fence-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A42EF07618BDC02700DDA6F0 /* Electronic FenceTests */ = {
+			isa = PBXGroup;
+			children = (
+				A42EF07C18BDC02700DDA6F0 /* Electronic_FenceTests.m */,
+				A42EF07718BDC02700DDA6F0 /* Supporting Files */,
+			);
+			path = "Electronic FenceTests";
+			sourceTree = "<group>";
+		};
+		A42EF07718BDC02700DDA6F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A42EF07818BDC02700DDA6F0 /* Electronic FenceTests-Info.plist */,
+				A42EF07918BDC02700DDA6F0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4DEADD918BEEAA6000747C2 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				A4DEADF218BF2EF8000747C2 /* sky@2x.png */,
+				A4DEADED18BF27F1000747C2 /* AAPaySeach@2x.png */,
+				A4DEADDA18BEEAA6000747C2 /* AAPayBottomBg@2x.png */,
+				A4DEADDB18BEEAA6000747C2 /* AAPayCollectAllMusic.mp3 */,
+				A4DEADDD18BEEAA6000747C2 /* AAPayUserDisplay.mp3 */,
+				A4DEADDE18BEEAA6000747C2 /* lbs_wave.mp3 */,
+				A4DEADDF18BEEAA6000747C2 /* lbs_wave.png */,
+				A4DEADE018BEEAA6000747C2 /* lbs_wave@2x.png */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		A4DEADF418C0304E000747C2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A4DEADF918C0304E000747C2 /* MagicFieldPopView.h */,
+				A4DEADFA18C0304E000747C2 /* MagicFieldPopView.m */,
+				A4DEADFB18C0304E000747C2 /* MarqueeLabel.h */,
+				A4DEADFC18C0304E000747C2 /* MarqueeLabel.m */,
+				A4DEADFD18C0304E000747C2 /* PopBar.h */,
+				A4DEADFE18C0304E000747C2 /* PopBar.m */,
+				A4DEADFF18C0304E000747C2 /* PopLoadingBar.h */,
+				A4DEAE0018C0304E000747C2 /* PopLoadingBar.m */,
+				A4DEAE0118C0304E000747C2 /* PopPanel.h */,
+				A4DEAE0218C0304E000747C2 /* PopPanel.m */,
+				A4DEAE0318C0304E000747C2 /* WifiCertifyView.h */,
+				A4DEAE0418C0304E000747C2 /* WifiCertifyView.m */,
+				A4DEAE0518C0304E000747C2 /* WifiCertifyViewController.h */,
+				A4DEAE0618C0304E000747C2 /* WifiCertifyViewController.m */,
+				A4DEAE0718C0304E000747C2 /* WifiFailureView.h */,
+				A4DEAE0818C0304E000747C2 /* WifiFailureView.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A4DEAE0918C0304E000747C2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A4DEAE0A18C0304E000747C2 /* UIColor+HexString.h */,
+				A4DEAE0B18C0304E000747C2 /* UIColor+HexString.m */,
+				A4DEAE0C18C0304E000747C2 /* UIScrollView+TouchEvent.h */,
+				A4DEAE0D18C0304E000747C2 /* UIScrollView+TouchEvent.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A42EF05318BDC02700DDA6F0 /* Electronic Fence */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A42EF08018BDC02700DDA6F0 /* Build configuration list for PBXNativeTarget "Electronic Fence" */;
+			buildPhases = (
+				A42EF05018BDC02700DDA6F0 /* Sources */,
+				A42EF05118BDC02700DDA6F0 /* Frameworks */,
+				A42EF05218BDC02700DDA6F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Electronic Fence";
+			productName = "Electronic Fence";
+			productReference = A42EF05418BDC02700DDA6F0 /* Electronic Fence.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A42EF06E18BDC02700DDA6F0 /* Electronic FenceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A42EF08318BDC02700DDA6F0 /* Build configuration list for PBXNativeTarget "Electronic FenceTests" */;
+			buildPhases = (
+				A42EF06B18BDC02700DDA6F0 /* Sources */,
+				A42EF06C18BDC02700DDA6F0 /* Frameworks */,
+				A42EF06D18BDC02700DDA6F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A42EF07518BDC02700DDA6F0 /* PBXTargetDependency */,
+			);
+			name = "Electronic FenceTests";
+			productName = "Electronic FenceTests";
+			productReference = A42EF06F18BDC02700DDA6F0 /* Electronic FenceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A42EF04C18BDC02700DDA6F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ALPEF;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = Alipay;
+				TargetAttributes = {
+					A42EF06E18BDC02700DDA6F0 = {
+						TestTargetID = A42EF05318BDC02700DDA6F0;
+					};
+				};
+			};
+			buildConfigurationList = A42EF04F18BDC02700DDA6F0 /* Build configuration list for PBXProject "Electronic Fence" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A42EF04B18BDC02700DDA6F0;
+			productRefGroup = A42EF05518BDC02700DDA6F0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A42EF05318BDC02700DDA6F0 /* Electronic Fence */,
+				A42EF06E18BDC02700DDA6F0 /* Electronic FenceTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A42EF05218BDC02700DDA6F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4DEADF318BF2EF8000747C2 /* sky@2x.png in Resources */,
+				A4DEADE718BEEAA6000747C2 /* lbs_wave@2x.png in Resources */,
+				A4DEADE118BEEAA6000747C2 /* AAPayBottomBg@2x.png in Resources */,
+				A42EF06218BDC02700DDA6F0 /* InfoPlist.strings in Resources */,
+				A4DEADE618BEEAA6000747C2 /* lbs_wave.png in Resources */,
+				A4DEADE218BEEAA6000747C2 /* AAPayCollectAllMusic.mp3 in Resources */,
+				A4DEADE418BEEAA6000747C2 /* AAPayUserDisplay.mp3 in Resources */,
+				A4DEADEE18BF27F1000747C2 /* AAPaySeach@2x.png in Resources */,
+				A4DEADE518BEEAA6000747C2 /* lbs_wave.mp3 in Resources */,
+				A42EF06A18BDC02700DDA6F0 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A42EF06D18BDC02700DDA6F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A42EF07B18BDC02700DDA6F0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A42EF05018BDC02700DDA6F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4DEADD818BEE83D000747C2 /* ALPEFCollectViewController.m in Sources */,
+				A42EF08818BDC8D100DDA6F0 /* ALPEFIndexViewController.m in Sources */,
+				A4DEAE1818C0304E000747C2 /* UIColor+HexString.m in Sources */,
+				A4DEAE1618C0304E000747C2 /* WifiCertifyViewController.m in Sources */,
+				A4DEAE1518C0304E000747C2 /* WifiCertifyView.m in Sources */,
+				A4DEAE1418C0304E000747C2 /* PopPanel.m in Sources */,
+				A4DEADF118BF2E30000747C2 /* ALPEFViewController.m in Sources */,
+				A4DEAE1218C0304E000747C2 /* PopBar.m in Sources */,
+				A4DEAE1918C0304E000747C2 /* UIScrollView+TouchEvent.m in Sources */,
+				A4DEAE1118C0304E000747C2 /* MarqueeLabel.m in Sources */,
+				A4DEAE1018C0304E000747C2 /* MagicFieldPopView.m in Sources */,
+				A42EF06418BDC02700DDA6F0 /* main.m in Sources */,
+				A42EF06818BDC02700DDA6F0 /* ALPEFAppDelegate.m in Sources */,
+				A4DEAE1318C0304E000747C2 /* PopLoadingBar.m in Sources */,
+				A4DEAE1718C0304E000747C2 /* WifiFailureView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A42EF06B18BDC02700DDA6F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A42EF07D18BDC02700DDA6F0 /* Electronic_FenceTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A42EF07518BDC02700DDA6F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A42EF05318BDC02700DDA6F0 /* Electronic Fence */;
+			targetProxy = A42EF07418BDC02700DDA6F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A42EF06018BDC02700DDA6F0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A42EF06118BDC02700DDA6F0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A42EF07918BDC02700DDA6F0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A42EF07A18BDC02700DDA6F0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A42EF07E18BDC02700DDA6F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A42EF07F18BDC02700DDA6F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A42EF08118BDC02700DDA6F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/yukai44444/workspace/git/ios/Electronic\\ Fence",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Electronic Fence/Electronic Fence-Prefix.pch";
+				INFOPLIST_FILE = "Electronic Fence/Electronic Fence-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-ObjC",
+					"-framework",
+					Reveal,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A42EF08218BDC02700DDA6F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/yukai44444/workspace/git/ios/Electronic\\ Fence",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Electronic Fence/Electronic Fence-Prefix.pch";
+				INFOPLIST_FILE = "Electronic Fence/Electronic Fence-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A42EF08418BDC02700DDA6F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Electronic Fence.app/Electronic Fence";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"/Users/yukai44444/workspace/git/ios/Electronic\\ Fence",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Electronic Fence/Electronic Fence-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Electronic FenceTests/Electronic FenceTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A42EF08518BDC02700DDA6F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Electronic Fence.app/Electronic Fence";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"/Users/yukai44444/workspace/git/ios/Electronic\\ Fence",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Electronic Fence/Electronic Fence-Prefix.pch";
+				INFOPLIST_FILE = "Electronic FenceTests/Electronic FenceTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A42EF04F18BDC02700DDA6F0 /* Build configuration list for PBXProject "Electronic Fence" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A42EF07E18BDC02700DDA6F0 /* Debug */,
+				A42EF07F18BDC02700DDA6F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A42EF08018BDC02700DDA6F0 /* Build configuration list for PBXNativeTarget "Electronic Fence" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A42EF08118BDC02700DDA6F0 /* Debug */,
+				A42EF08218BDC02700DDA6F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A42EF08318BDC02700DDA6F0 /* Build configuration list for PBXNativeTarget "Electronic FenceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A42EF08418BDC02700DDA6F0 /* Debug */,
+				A42EF08518BDC02700DDA6F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A42EF04C18BDC02700DDA6F0 /* Project object */;
+}
