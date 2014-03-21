@@ -86,31 +86,30 @@
     [self.imageView setImage:scaledImage];
     [self.view addSubview:self.imageView];
     
+    
     CGImageRef img = scaledImage.CGImage;
-    
-    //定义输入缓存，输出缓存
-    vImage_Buffer inBuffer;
-
-    
-    //通过CGImageRef创建vImage_Buffer，首先创建数据源提供者
+    //创建数据源提供者
     CGDataProviderRef inProvider = CGImageGetDataProvider(img);
+    //取出图片像素数据
     CFDataRef inBitmapData = CGDataProviderCopyData(inProvider);
     
-    inBuffer.width = CGImageGetWidth(img);
-    inBuffer.height = CGImageGetHeight(img);
-    inBuffer.rowBytes = CGImageGetBytesPerRow(img);
-    inBuffer.data = (void*)CFDataGetBytePtr(inBitmapData);
+    unsigned long imgWidth = CGImageGetWidth(img);
+    unsigned long imgHeight = CGImageGetHeight(img);
     
     //取一个指向UInt8格式数据的指针
     const UInt8* data = CFDataGetBytePtr(inBitmapData);
     NSMutableString *result = [[NSMutableString alloc] init];
-    for (int h = 0; h < inBuffer.height; h+= 12) {
+    //垂直方向每隔12像素取一个像素，可以不是12
+    for (int h = 0; h < imgHeight; h+= 12) {
         NSMutableString *chardata = [[NSMutableString alloc] init];
-        for (int w = 0; w < inBuffer.width; w+= 6) {
-            int index = (int)(w + inBuffer.width * h) * 4;
+        //水平方向每隔6像素取一个像素，因为字符的宽是高的一半，当然也可以不是6
+        for (int w = 0; w < imgWidth; w+= 6) {
+            //取出了一个像素里的RGBA值
+            int index = (int)(w + imgWidth * h) * 4;
             UInt8 r = data[index + 0];
             UInt8 g = data[index + 1];
             UInt8 b = data[index + 2];
+            //按照灰度值计算公式得到这个像素点的灰度，并转成一个字符
             double gray = [self getGray:r g:g b:b];
             NSString *text = [self toText:gray];
             [chardata appendString:text];
@@ -121,7 +120,7 @@
     
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 130, self.view.frame.size.width, 350)];
     textView.textColor = [UIColor blackColor];
-    textView.font = [UIFont fontWithName:@"menlo" size:9.0 * self.view.frame.size.width / inBuffer.width];
+    textView.font = [UIFont fontWithName:@"menlo" size:9.0 * self.view.frame.size.width / imgWidth];
     textView.backgroundColor = [UIColor whiteColor];
     textView.delegate = self;
     textView.text = result;
@@ -130,9 +129,36 @@
     
     NSString *cacheFile = [self validFilePath];
     NSData *cacheData =  [result dataUsingEncoding:NSUTF8StringEncoding];
-    [[NSFileManager defaultManager] createFileAtPath:cacheFile contents:cacheData attributes:nil];;
+    [[NSFileManager defaultManager] createFileAtPath:cacheFile contents:cacheData attributes:nil];
     
-
+    UITextView *textView2 = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 350)];
+    textView2.textColor = [UIColor blackColor];
+    textView2.font = [UIFont fontWithName:@"menlo" size:9.0 * self.view.frame.size.width / imgWidth];
+    textView2.backgroundColor = [UIColor whiteColor];
+    textView2.delegate = self;
+    textView2.text = result;
+    textView2.autoresizingMask = UIViewAutoresizingFlexibleHeight;//自适应高度
+    
+    //创建一个layer用来承载UITextView
+    CALayer *layer = [[CALayer alloc] init];
+    layer.frame = CGRectMake(0, 0, self.view.frame.size.width, 350);
+    [layer addSublayer:textView2.layer];
+    
+    //用renderInContext方法，把这个layer转成图片
+    UIGraphicsBeginImageContext(layer.bounds.size);
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image2 = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //保存到相册
+    UIImageWriteToSavedPhotosAlbum(image2, nil, nil, nil);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"存储照片成功"
+                                                    message:@"您已将照片存储于图片库中，打开照片程序即可查看。"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 - (NSString *)cacheFolderPath{
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
