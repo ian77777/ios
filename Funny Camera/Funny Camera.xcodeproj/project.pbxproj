@@ -19,6 +19,7 @@
 		267E3D2F18DA974900D9911A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267E3D1718DA974900D9911A /* UIKit.framework */; };
 		267E3D3718DA974900D9911A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 267E3D3518DA974900D9911A /* InfoPlist.strings */; };
 		267E3D3918DA974900D9911A /* Funny_CameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 267E3D3818DA974900D9911A /* Funny_CameraTests.m */; };
+		A424314019629096004F138F /* YKFCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A424313F19629096004F138F /* YKFCRootViewController.m */; };
 		A4584ACA18DC68810032D808 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4584AC918DC68810032D808 /* Reveal.framework */; };
 		A4AC435B18DA9F900035A3FE /* YKFCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC435A18DA9F900035A3FE /* YKFCViewController.m */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,8 @@
 		267E3D3418DA974900D9911A /* Funny CameraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Funny CameraTests-Info.plist"; sourceTree = "<group>"; };
 		267E3D3618DA974900D9911A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		267E3D3818DA974900D9911A /* Funny_CameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Funny_CameraTests.m; sourceTree = "<group>"; };
+		A424313E19629096004F138F /* YKFCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKFCRootViewController.h; sourceTree = "<group>"; };
+		A424313F19629096004F138F /* YKFCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKFCRootViewController.m; sourceTree = "<group>"; };
 		A4584AC918DC68810032D808 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<absolute>"; };
 		A4AC435918DA9F900035A3FE /* YKFCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKFCViewController.h; sourceTree = "<group>"; };
 		A4AC435A18DA9F900035A3FE /* YKFCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKFCViewController.m; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				267E3D1A18DA974900D9911A /* Supporting Files */,
 				A4AC435918DA9F900035A3FE /* YKFCViewController.h */,
 				A4AC435A18DA9F900035A3FE /* YKFCViewController.m */,
+				A424313E19629096004F138F /* YKFCRootViewController.h */,
+				A424313F19629096004F138F /* YKFCRootViewController.m */,
 			);
 			path = "Funny Camera";
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				A4AC435B18DA9F900035A3FE /* YKFCViewController.m in Sources */,
 				267E3D2018DA974900D9911A /* main.m in Sources */,
 				267E3D2418DA974900D9911A /* YKFCAppDelegate.m in Sources */,
+				A424314019629096004F138F /* YKFCRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
