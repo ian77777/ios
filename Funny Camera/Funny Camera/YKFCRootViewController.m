@@ -8,8 +8,6 @@
 
 #import "YKFCRootViewController.h"
 
-#define kScaleImageWidth 720.0
-
 @interface YKFCRootViewController ()
 
 @end
@@ -43,11 +41,11 @@
     [self.captureSession addOutput:captureOutput];
     [self.captureSession startRunning];
     
-    self.textView = [[UITextView alloc] initWithFrame:self.view.bounds];
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(5.0, 10.0, self.view.frame.size.width - 10.0, (self.view.frame.size.width - 10.0) * 853.0 / 640)];
     self.textView.textColor = [UIColor blackColor];
     self.textView.backgroundColor = [UIColor whiteColor];
     self.textView.delegate = self;
-    self.textView.font = [UIFont fontWithName:@"menlo" size:9.0 * self.view.frame.size.width / kScaleImageWidth];
+    self.textView.font = [UIFont fontWithName:@"menlo" size:9.0];
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;//自适应高度
     [self.view addSubview:self.textView];
     
@@ -56,6 +54,7 @@
     self.prevLayer.frame = CGRectMake(100, 0, 100, 100);
     self.prevLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.view.layer addSublayer: self.prevLayer];
+
 }
 
 #pragma mark -
@@ -78,36 +77,21 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                                                     kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
     CGImageRef newImage = CGBitmapContextCreateImage(newContext);
     
-    CGContextRelease(newContext);
-    CGColorSpaceRelease(colorSpace);
+
     
-    UIImage *image= [UIImage imageWithCGImage:newImage scale:1.0
-                                  orientation:UIImageOrientationRight];
     
-    CGImageRelease(newImage);
-    
-    NSString *result = [self transformImage:image];
+    NSString *result = [self transformImage:newImage];
     
     [self.textView performSelectorOnMainThread:@selector(setText:) withObject:result waitUntilDone:YES];
-    
+    CGContextRelease(newContext);
+    CGColorSpaceRelease(colorSpace);
+    CGImageRelease(newImage);
     CVPixelBufferUnlockBaseAddress(imageBuffer,0); 
     
 }
 
-- (NSString *)transformImage:(UIImage *)image
+- (NSString *)transformImage:(CGImageRef)img
 {
-    
-    CGSize size = CGSizeMake(kScaleImageWidth, kScaleImageWidth * image.size.height / image.size.width);
-    UIGraphicsBeginImageContext(size);  //size 为CGSize类型，即你所需要的图片尺寸
-    
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    
-    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    
-    
-    CGImageRef img = scaledImage.CGImage;
     //创建数据源提供者
     CGDataProviderRef inProvider = CGImageGetDataProvider(img);
     //取出图片像素数据
@@ -138,7 +122,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         [result appendString:chardata];
     }
     
-    CGImageRelease(img);
     CFRelease(inBitmapData);
     return result;
 }
