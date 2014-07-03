@@ -45,7 +45,6 @@
     self.textView.textColor = [UIColor blackColor];
     self.textView.backgroundColor = [UIColor whiteColor];
     self.textView.delegate = self;
-    self.textView.font = [UIFont fontWithName:@"menlo" size:9.0];
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;//自适应高度
     [self.view addSubview:self.textView];
     
@@ -81,7 +80,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     
     NSString *result = [self transformImage:newImage];
-    
+    [self.textView performSelectorOnMainThread:@selector(setFont:) withObject:[UIFont fontWithName:@"menlo" size:9.0 * self.view.frame.size.width / self.imageWidth] waitUntilDone:YES];
     [self.textView performSelectorOnMainThread:@selector(setText:) withObject:result waitUntilDone:YES];
     CGContextRelease(newContext);
     CGColorSpaceRelease(colorSpace);
@@ -98,6 +97,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     CFDataRef inBitmapData = CGDataProviderCopyData(inProvider);
     
     unsigned long imgWidth = CGImageGetWidth(img);
+    self.imageWidth = imgWidth;
     unsigned long imgHeight = CGImageGetHeight(img);
     
     //取一个指向UInt8格式数据的指针

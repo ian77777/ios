@@ -13,8 +13,9 @@
 #import <CoreMedia/CoreMedia.h>
 
 @interface YKFCRootViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate,UITextViewDelegate>
-@property (nonatomic, retain) AVCaptureSession *captureSession;
-@property (nonatomic, retain) UIImageView *imageView;
-@property (nonatomic, retain) AVCaptureVideoPreviewLayer *prevLayer;
+@property (nonatomic, strong) AVCaptureSession *captureSession;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) AVCaptureVideoPreviewLayer *prevLayer;
 @property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, assign) unsigned long imageWidth;
 @end
