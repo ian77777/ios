@@ -16,10 +16,11 @@
 #define kViewWidth (self.view.frame.size.width)
 #define kViewHeight (self.view.window.frame.size.height)
 
-@interface YKFCRootViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,UITextViewDelegate>
+@interface YKFCRootViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 @property (nonatomic, strong) UIImageView *changeCameraImageView;
 @property (nonatomic, strong) UIImageView *pickImageView;
+@property (nonatomic, strong) UIImageView *photoImageView;
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, assign) unsigned long imageWidth;
 @end
@@ -77,9 +78,53 @@
     [self.view addSubview:self.pickImageView];
     self.pickImageView.userInteractionEnabled = YES;
     [self.pickImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickImageViewTap)]];
+    
+    // 从相册中选取icon
+    self.photoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15.0, 40.0 + self.textView.frame.size.height + 30.0, 47.0, 47.0)];
+    self.photoImageView.image = [UIImage imageNamed:@"pick"];
+    [self.view addSubview:self.photoImageView];
+    self.photoImageView.userInteractionEnabled = YES;
+    [self.photoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(photoImageViewTap)]];
+}
+
+#pragma mark - image picker delegte
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+	[picker dismissViewControllerAnimated:YES completion:^{}];
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    NSString *result = [self transformImage:image.CGImage];
+    
+    UIView *maskView = [[UIView alloc] initWithFrame:self.view.frame];
+    maskView.backgroundColor = [UIColor blackColor];
+    
+    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, kViewWidth * 4 / 3)];
+    textView.textColor = [UIColor blackColor];
+    textView.backgroundColor = [UIColor whiteColor];
+    textView.delegate = self;
+    [textView setTextAlignment:NSTextAlignmentCenter];
+    textView.text = result;
+    textView.font = [UIFont fontWithName:@"menlo" size:9.6 * kViewWidth / 640.0];
+    
+    [maskView addSubview:textView];
+    [self.view addSubview:maskView];
 }
 
 #pragma mark - TapEvent
+- (void)photoImageViewTap
+{
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    
+    imagePickerController.delegate = self;
+    
+    imagePickerController.allowsEditing = YES;
+    
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:imagePickerController animated:YES completion:^{}];
+}
+
 - (void)changeCameraImageViewTap
 {
     //Change camera source
@@ -125,17 +170,32 @@
 
 - (void)pickImageViewTap
 {
+    UIView *flashView = [[UIView alloc] initWithFrame:self.textView.frame];
+    
+    [flashView setBackgroundColor:[UIColor blackColor]];
+    [self.view addSubview:flashView];
+    
+    [UIView animateWithDuration:0.4f
+                     animations:^{
+                         [flashView setAlpha:0.0f];
+                     }
+                     completion:^(BOOL finished){
+                         [flashView removeFromSuperview];
+                     }
+     ];
+    
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, kViewWidth * 4 / 3)];
     textView.textColor = [UIColor blackColor];
     textView.backgroundColor = [UIColor whiteColor];
     textView.delegate = self;
     [textView setTextAlignment:NSTextAlignmentCenter];
     textView.text = self.textView.text;
-    
+    textView.font = [UIFont fontWithName:@"menlo" size:9.6 * kViewWidth / self.imageWidth];
+
     //创建一个layer用来承载UITextView
     CALayer *layer = [[CALayer alloc] init];
     layer.frame = textView.bounds;
-    [layer addSublayer:self.textView.layer];
+    [layer addSublayer:textView.layer];
     
     //用renderInContext方法，把这个layer转成图片
     UIGraphicsBeginImageContext(layer.bounds.size);
@@ -143,8 +203,10 @@
     UIImage *image2 = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    //保存到相册
-    UIImageWriteToSavedPhotosAlbum(image2, nil, nil, nil);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //保存到相册
+        UIImageWriteToSavedPhotosAlbum(image2, nil, nil, nil);
+    });
 }
 
 #pragma mark - AVCaptureSession delegate
@@ -183,7 +245,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     CGImageRef newImage = CGBitmapContextCreateImage(newContext);
     
     NSString *result = [self transformImage:newImage];
-    [self.textView performSelectorOnMainThread:@selector(setFont:) withObject:[UIFont fontWithName:@"menlo" size:9.6 * self.view.frame.size.width / self.imageWidth] waitUntilDone:YES];
+    [self.textView performSelectorOnMainThread:@selector(setFont:) withObject:[UIFont fontWithName:@"menlo" size:9.6 * kViewWidth / self.imageWidth] waitUntilDone:YES];
     [self.textView performSelectorOnMainThread:@selector(setText:) withObject:result waitUntilDone:YES];
     
     free(outBuff);
