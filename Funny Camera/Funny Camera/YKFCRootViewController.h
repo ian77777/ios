@@ -7,14 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <CoreGraphics/CoreGraphics.h>
-#import <CoreVideo/CoreVideo.h>
-#import <CoreMedia/CoreMedia.h>
 
-@interface YKFCRootViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate,UITextViewDelegate>
-@property (nonatomic, strong) AVCaptureSession *captureSession;
-@property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UITextView *textView;
-@property (nonatomic, assign) unsigned long imageWidth;
+@interface YKFCRootViewController : UIViewController
+
 @end
