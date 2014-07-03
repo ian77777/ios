@@ -7,6 +7,7 @@
 //
 
 #import "YKFCRootViewController.h"
+#import <Accelerate/Accelerate.h>
 
 @interface YKFCRootViewController ()
 
@@ -41,18 +42,12 @@
     [self.captureSession addOutput:captureOutput];
     [self.captureSession startRunning];
     
-    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(5.0, 10.0, self.view.frame.size.width - 10.0, (self.view.frame.size.width - 10.0) * 853.0 / 640)];
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(6.0, 10.0, self.view.frame.size.width - 10.0, (self.view.frame.size.width - 10.0) * 853.0 / 640)];
     self.textView.textColor = [UIColor blackColor];
     self.textView.backgroundColor = [UIColor whiteColor];
     self.textView.delegate = self;
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;//自适应高度
     [self.view addSubview:self.textView];
-    
-    self.prevLayer = [AVCaptureVideoPreviewLayer
-                      layerWithSession: self.captureSession];
-    self.prevLayer.frame = CGRectMake(100, 0, 100, 100);
-    self.prevLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    [self.view.layer addSublayer: self.prevLayer];
 
 }
 
@@ -65,23 +60,38 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     CVPixelBufferLockBaseAddress(imageBuffer,0);
-    uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddress(imageBuffer);
     size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
     size_t width = CVPixelBufferGetWidth(imageBuffer);
     size_t height = CVPixelBufferGetHeight(imageBuffer);
     
+
+    void *srcBuff = CVPixelBufferGetBaseAddress(imageBuffer);
+
+    uint8_t rotationConstant = 3;
+    
+    unsigned char *outBuff = (unsigned char*)malloc(bytesPerRow * height * sizeof(unsigned char));
+    
+    vImage_Buffer ibuff = { srcBuff, height, width, bytesPerRow};
+    vImage_Buffer ubuff = { outBuff, width, height, 4 * height * sizeof(unsigned char)};
+    Pixel_8888 backColour = { (uint8_t)255,(uint8_t)255, (uint8_t)255,(uint8_t)255 };
+    vImage_Error err= vImageRotate90_ARGB8888 (&ibuff, &ubuff, rotationConstant, backColour, 0);
+    if (err != kvImageNoError) NSLog(@"%ld", err);
+    
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef newContext = CGBitmapContextCreate(baseAddress,
-                                                    width, height, 8, bytesPerRow, colorSpace,
-                                                    kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    CGContextRef newContext = CGBitmapContextCreate(ubuff.data,
+                                             ubuff.width,
+                                             ubuff.height,
+                                             8,
+                                             ubuff.rowBytes,
+                                             colorSpace,
+                                             kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
     CGImageRef newImage = CGBitmapContextCreateImage(newContext);
     
-
-    
-    
     NSString *result = [self transformImage:newImage];
-    [self.textView performSelectorOnMainThread:@selector(setFont:) withObject:[UIFont fontWithName:@"menlo" size:9.0 * self.view.frame.size.width / self.imageWidth] waitUntilDone:YES];
+    [self.textView performSelectorOnMainThread:@selector(setFont:) withObject:[UIFont fontWithName:@"menlo" size:9.3 * self.view.frame.size.width / self.imageWidth] waitUntilDone:YES];
     [self.textView performSelectorOnMainThread:@selector(setText:) withObject:result waitUntilDone:YES];
+    
+    free(outBuff);
     CGContextRelease(newContext);
     CGColorSpaceRelease(colorSpace);
     CGImageRelease(newImage);

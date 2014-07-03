@@ -15,7 +15,6 @@
 @interface YKFCRootViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate,UITextViewDelegate>
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) AVCaptureVideoPreviewLayer *prevLayer;
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, assign) unsigned long imageWidth;
 @end
