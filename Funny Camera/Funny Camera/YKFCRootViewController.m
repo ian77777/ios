@@ -42,7 +42,7 @@
                                                init];
     // 配置output对象
     captureOutput.alwaysDiscardsLateVideoFrames = YES;
-//    captureOutput.minFrameDuration = CMTimeMake(1, 10);
+    
     //设置抽样缓存委托和将应用回调的队列
     dispatch_queue_t queue;
     queue = dispatch_queue_create("cameraQueue", NULL);
@@ -222,7 +222,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
     // 用Core Video图像缓存对象来得到其中的图片采集部分，CVImageBufferRef是专门用于保存视频的图片帧缓存的数据结构
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-    // 锁定imageBuffer的基地址
+    // 锁定imageBuffer的基地址，使imageBuffer的内存空间不再变动。对CVImageBufferRef的操作都需要先lock
     CVPixelBufferLockBaseAddress(imageBuffer,0);
     // 得到imageBuffer的行字节数
     size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
