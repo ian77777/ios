@@ -31,28 +31,34 @@
     self.view.backgroundColor = [UIColor blackColor];
     [self initCapture];
 }
-
+//初始化AVCaptureSession，添加输入，输出源
 - (void)initCapture {
+    //找到一个合适的AVCaptureDevice，这里默认使用后置摄像头，用device对象创建一个设备对象input，并将其添加到session
     AVCaptureDeviceInput *captureInput = [AVCaptureDeviceInput
                                           deviceInputWithDevice:[AVCaptureDevice
                                                                  defaultDeviceWithMediaType:AVMediaTypeVideo]  error:nil];
+    // 创建一个VideoDataOutput对象，将其添加到session
     AVCaptureVideoDataOutput *captureOutput = [[AVCaptureVideoDataOutput alloc]
                                                init];
+    // 配置output对象
     captureOutput.alwaysDiscardsLateVideoFrames = YES;
 //    captureOutput.minFrameDuration = CMTimeMake(1, 10);
-    
+    //设置抽样缓存委托和将应用回调的队列
     dispatch_queue_t queue;
     queue = dispatch_queue_create("cameraQueue", NULL);
     [captureOutput setSampleBufferDelegate:self queue:queue];
+    // 指定像素格式.videoSettings，这里可以配置输出数据的一些配置，比如宽高和视频的格式
     NSString* key = (NSString*)kCVPixelBufferPixelFormatTypeKey;
     NSNumber* value = [NSNumber
                        numberWithUnsignedInt:kCVPixelFormatType_32BGRA];
     NSDictionary* videoSettings = [NSDictionary
                                    dictionaryWithObject:value forKey:key];
     [captureOutput setVideoSettings:videoSettings];
+    
     self.captureSession = [[AVCaptureSession alloc] init];
     [self.captureSession addInput:captureInput];
     [self.captureSession addOutput:captureOutput];
+    // 启动session以启动数据流
     [self.captureSession startRunning];
     
     // 文字流区域
@@ -80,8 +86,8 @@
     [self.pickImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickImageViewTap)]];
     
     // 从相册中选取icon
-    self.photoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15.0, 40.0 + self.textView.frame.size.height + 30.0, 47.0, 47.0)];
-    self.photoImageView.image = [UIImage imageNamed:@"pick"];
+    self.photoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15.0, 40.0 + self.textView.frame.size.height + 33.0, 47.0, 47.0 * 180.0 / 216.0)];
+    self.photoImageView.image = [UIImage imageNamed:@"pickFromAlbum"];
     [self.view addSubview:self.photoImageView];
     self.photoImageView.userInteractionEnabled = YES;
     [self.photoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(photoImageViewTap)]];
@@ -157,7 +163,6 @@
     }
 }
 
-// Find a camera with the specified AVCaptureDevicePosition, returning nil if one is not found
 - (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position
 {
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
@@ -210,31 +215,37 @@
 }
 
 #pragma mark - AVCaptureSession delegate
+// 采集帧
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection
 {
-    
+    // 用Core Video图像缓存对象来得到其中的图片采集部分，CVImageBufferRef是专门用于保存视频的图片帧缓存的数据结构
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    // 锁定imageBuffer的基地址
     CVPixelBufferLockBaseAddress(imageBuffer,0);
+    // 得到imageBuffer的行字节数
     size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    // 得到imageBuffer的宽和高
     size_t width = CVPixelBufferGetWidth(imageBuffer);
     size_t height = CVPixelBufferGetHeight(imageBuffer);
     
-
+    // 得到imageBuffer的基地址
     void *srcBuff = CVPixelBufferGetBaseAddress(imageBuffer);
 
+    // 由于ios默认保存的数据是横屏的，所以需要转下角度。rotationConstant=3表示转270度。
     uint8_t rotationConstant = 3;
     
     unsigned char *outBuff = (unsigned char*)malloc(bytesPerRow * height * sizeof(unsigned char));
     
     vImage_Buffer ibuff = { srcBuff, height, width, bytesPerRow};
     vImage_Buffer ubuff = { outBuff, width, height, 4 * height * sizeof(unsigned char)};
-    Pixel_8888 backColour = { (uint8_t)255,(uint8_t)255, (uint8_t)255,(uint8_t)255 };
-    vImage_Error err= vImageRotate90_ARGB8888 (&ibuff, &ubuff, rotationConstant, backColour, 0);
+    Pixel_8888 bgColor = { (uint8_t)255,(uint8_t)255, (uint8_t)255,(uint8_t)255 };
+    vImage_Error err= vImageRotate90_ARGB8888 (&ibuff, &ubuff, rotationConstant, bgColor, 0);
     if (err != kvImageNoError) NSLog(@"%ld", err);
-    
+    // 创建一个依赖于设备的RGB颜色空间
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    // 用抽样缓存的数据创建一个位图格式的图形上下文（graphics context）对象
     CGContextRef newContext = CGBitmapContextCreate(ubuff.data,
                                              ubuff.width,
                                              ubuff.height,
@@ -242,6 +253,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                                              ubuff.rowBytes,
                                              colorSpace,
                                              kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    // 根据这个位图context中的像素数据创建一个Quartz image对象
     CGImageRef newImage = CGBitmapContextCreateImage(newContext);
     
     NSString *result = [self transformImage:newImage];
@@ -252,6 +264,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     CGContextRelease(newContext);
     CGColorSpaceRelease(colorSpace);
     CGImageRelease(newImage);
+    // 解锁imageBuffer
     CVPixelBufferUnlockBaseAddress(imageBuffer,0); 
     
 }
