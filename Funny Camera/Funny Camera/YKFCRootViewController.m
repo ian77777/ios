@@ -163,7 +163,7 @@
     }
 }
 
-- (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position
+- (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition) position
 {
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     for (AVCaptureDevice *device in devices)
