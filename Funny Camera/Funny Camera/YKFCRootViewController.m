@@ -18,10 +18,12 @@
 
 @interface YKFCRootViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) AVCaptureSession *captureSession;
-@property (nonatomic, strong) UIImageView *changeCameraImageView;
-@property (nonatomic, strong) UIImageView *pickImageView;
-@property (nonatomic, strong) UIImageView *photoImageView;
+@property (nonatomic, strong) UIButton *changeCameraImageBtn;
+@property (nonatomic, strong) UIButton *pickImageBtn;
+@property (nonatomic, strong) UIButton *photoImageBtn;
 @property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) UITextView *prevTextView;
+@property (nonatomic, strong) UIView *maskView;
 @property (nonatomic, assign) unsigned long imageWidth;
 @end
 
@@ -30,14 +32,6 @@
 - (void)viewDidLoad {
     self.view.backgroundColor = [UIColor blackColor];
     [self initCapture];
-    for (NSString* family in [UIFont familyNames])
-    {
-        NSLog(@"%@", family);
-        for (NSString* name in [UIFont fontNamesForFamilyName: family])
-        {
-            NSLog(@"  %@", name);
-        }
-    }
 }
 //初始化AVCaptureSession，添加输入，输出源
 - (void)initCapture {
@@ -80,25 +74,25 @@
     [self.view addSubview:self.textView];
     
     // 前置摄像头icon
-    self.changeCameraImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kViewWidth - 38.0, 9.0, 28.0, 21.0)];
-    self.changeCameraImageView.image = [UIImage imageNamed:@"changeCamera"];
-    [self.view addSubview:self.changeCameraImageView];
-    self.changeCameraImageView.userInteractionEnabled = YES;
-    [self.changeCameraImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeCameraImageViewTap)]];
+    self.changeCameraImageBtn = [[UIButton alloc] initWithFrame:CGRectMake(kViewWidth - 34.0, 8.0, 23.0, 23.0)];
+    [self.changeCameraImageBtn setBackgroundImage:[UIImage imageNamed:@"changeCamera"] forState:UIControlStateNormal];
+    [self.changeCameraImageBtn setBackgroundImage:[UIImage imageNamed:@"changeCamera-clicked"] forState:UIControlStateHighlighted];
+    [self.view addSubview:self.changeCameraImageBtn];
+    [self.changeCameraImageBtn addTarget:self action:@selector(changeCameraImageViewTap) forControlEvents:UIControlEventTouchUpInside];
     
     // 拍照icon
-    self.pickImageView = [[UIImageView alloc] initWithFrame:CGRectMake((kViewWidth - 68.0) / 2.0, 40.0 + self.textView.frame.size.height + 20.0, 68.0, 68.0)];
-    self.pickImageView.image = [UIImage imageNamed:@"pick"];
-    [self.view addSubview:self.pickImageView];
-    self.pickImageView.userInteractionEnabled = YES;
-    [self.pickImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickImageViewTap)]];
+    self.pickImageBtn = [[UIButton alloc] initWithFrame:CGRectMake((kViewWidth - 66.0) / 2.0, 40.0 + self.textView.frame.size.height + 24.0, 66.0, 57.0)];
+    [self.pickImageBtn setBackgroundImage:[UIImage imageNamed:@"pick"] forState:UIControlStateNormal];
+    [self.pickImageBtn setBackgroundImage:[UIImage imageNamed:@"pick-clicked"] forState:UIControlStateHighlighted];
+    [self.view addSubview:self.pickImageBtn];
+    [self.pickImageBtn addTarget:self action:@selector(pickImageViewTap) forControlEvents:UIControlEventTouchUpInside];
     
     // 从相册中选取icon
-    self.photoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15.0, 40.0 + self.textView.frame.size.height + 33.0, 47.0, 47.0 * 180.0 / 216.0)];
-    self.photoImageView.image = [UIImage imageNamed:@"pickFromAlbum"];
-    [self.view addSubview:self.photoImageView];
-    self.photoImageView.userInteractionEnabled = YES;
-    [self.photoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(photoImageViewTap)]];
+    self.photoImageBtn = [[UIButton alloc] initWithFrame:CGRectMake(15.0, 40.0 + self.textView.frame.size.height + 39.0, 46.0, 35.0)];
+    [self.photoImageBtn setBackgroundImage:[UIImage imageNamed:@"pickFromAlbum"] forState:UIControlStateNormal];
+    [self.photoImageBtn setBackgroundImage:[UIImage imageNamed:@"pickFromAlbum-clicked"] forState:UIControlStateHighlighted];
+    [self.view addSubview:self.photoImageBtn];
+    [self.photoImageBtn addTarget:self action:@selector(photoImageViewTap) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - image picker delegte
@@ -107,25 +101,79 @@
 	[picker dismissViewControllerAnimated:YES completion:^{}];
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSString *result;
+    unsigned long imgWidth;
+    if (CGImageGetWidth(image.CGImage) > CGImageGetHeight(image.CGImage)) {
+        UIImage *image2 = [UIImage imageWithCGImage:image.CGImage scale:1.0
+                                        orientation:UIImageOrientationRight];
+        
+        result = [self transformImage:image2.CGImage];
+        imgWidth = CGImageGetWidth(image2.CGImage);
+    } else {
+        result = [self transformImage:image.CGImage];
+        imgWidth = CGImageGetWidth(image.CGImage);
+    }
     
-    NSString *result = [self transformImage:image.CGImage];
+    if (self.maskView) {
+        self.prevTextView.text = result;
+        self.maskView.hidden = NO;
+    } else {
+        self.maskView = [[UIView alloc] initWithFrame:self.view.frame];
+        self.maskView.backgroundColor = [UIColor blackColor];
+        
+        self.prevTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 40.0, kViewWidth, kViewWidth * 4 / 3)];
+        self.prevTextView.textColor = [UIColor blackColor];
+        self.prevTextView.backgroundColor = [UIColor whiteColor];
+        self.prevTextView.delegate = self;
+        self.prevTextView.editable = NO;//不可编辑
+        self.prevTextView.scrollEnabled = NO;//不可滚动
+        [self.prevTextView setTextAlignment:NSTextAlignmentCenter];
+        self.prevTextView.text = result;
+        self.prevTextView.font = [UIFont fontWithName:@"menlo" size:9.6 * kViewWidth / imgWidth];
+        [self.maskView addSubview:self.prevTextView];
+        
+        UIButton *yesBtn = [[UIButton alloc] initWithFrame:CGRectMake(189.0, 40.0 + self.textView.frame.size.height + 27.0, 48.0, 49.0)];
+        [yesBtn setBackgroundImage:[UIImage imageNamed:@"yes"] forState:UIControlStateNormal];
+        [yesBtn setBackgroundImage:[UIImage imageNamed:@"yes-clicked"] forState:UIControlStateHighlighted];
+        [self.maskView addSubview:yesBtn];
+        [yesBtn addTarget:self action:@selector(yesTap) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIButton *noBtn = [[UIButton alloc] initWithFrame:CGRectMake(82.0, 40.0 + self.textView.frame.size.height + 27.0, 48.0, 49.0)];
+        [noBtn setBackgroundImage:[UIImage imageNamed:@"no"] forState:UIControlStateNormal];
+        [noBtn setBackgroundImage:[UIImage imageNamed:@"no-clicked"] forState:UIControlStateHighlighted];
+        [self.maskView addSubview:noBtn];
+        [noBtn addTarget:self action:@selector(noTap) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.view addSubview:self.maskView];
+    }
     
-    UIView *maskView = [[UIView alloc] initWithFrame:self.view.frame];
-    maskView.backgroundColor = [UIColor blackColor];
-    
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, kViewWidth * 4 / 3)];
-    textView.textColor = [UIColor blackColor];
-    textView.backgroundColor = [UIColor whiteColor];
-    textView.delegate = self;
-    [textView setTextAlignment:NSTextAlignmentCenter];
-    textView.text = result;
-    textView.font = [UIFont fontWithName:@"menlo" size:9.6 * kViewWidth / 640.0];
-    
-    [maskView addSubview:textView];
-    [self.view addSubview:maskView];
 }
 
 #pragma mark - TapEvent
+- (void)noTap
+{
+    self.maskView.hidden = YES;
+}
+
+- (void)yesTap
+{
+    //创建一个layer用来承载UITextView
+    CALayer *layer = [[CALayer alloc] init];
+    layer.frame = self.prevTextView.bounds;
+    [layer addSublayer:self.prevTextView.layer];
+    
+    //用renderInContext方法，把这个layer转成图片
+    UIGraphicsBeginImageContext(layer.bounds.size);
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image2 = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //保存到相册
+        UIImageWriteToSavedPhotosAlbum(image2, nil, nil, nil);
+    });
+}
+
 - (void)photoImageViewTap
 {
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
