@@ -30,6 +30,14 @@
 - (void)viewDidLoad {
     self.view.backgroundColor = [UIColor blackColor];
     [self initCapture];
+    for (NSString* family in [UIFont familyNames])
+    {
+        NSLog(@"%@", family);
+        for (NSString* name in [UIFont fontNamesForFamilyName: family])
+        {
+            NSLog(@"  %@", name);
+        }
+    }
 }
 //初始化AVCaptureSession，添加输入，输出源
 - (void)initCapture {

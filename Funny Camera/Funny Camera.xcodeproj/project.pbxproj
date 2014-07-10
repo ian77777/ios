@@ -19,6 +19,7 @@
 		267E3D2F18DA974900D9911A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267E3D1718DA974900D9911A /* UIKit.framework */; };
 		267E3D3718DA974900D9911A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 267E3D3518DA974900D9911A /* InfoPlist.strings */; };
 		267E3D3918DA974900D9911A /* Funny_CameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 267E3D3818DA974900D9911A /* Funny_CameraTests.m */; };
+		26FBA222196D7F83004A0714 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26FBA221196D7F75004A0714 /* iconfont.ttf */; };
 		A424314019629096004F138F /* YKFCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A424313F19629096004F138F /* YKFCRootViewController.m */; };
 		A42431DA19653277004F138F /* changeCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A42431D819653277004F138F /* changeCamera@2x.png */; };
 		A42431DB19653277004F138F /* pick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A42431D919653277004F138F /* pick@2x.png */; };
@@ -54,6 +55,7 @@
 		267E3D3418DA974900D9911A /* Funny CameraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Funny CameraTests-Info.plist"; sourceTree = "<group>"; };
 		267E3D3618DA974900D9911A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		267E3D3818DA974900D9911A /* Funny_CameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Funny_CameraTests.m; sourceTree = "<group>"; };
+		26FBA221196D7F75004A0714 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 		A424313E19629096004F138F /* YKFCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKFCRootViewController.h; sourceTree = "<group>"; };
 		A424313F19629096004F138F /* YKFCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKFCRootViewController.m; sourceTree = "<group>"; };
 		A42431D819653277004F138F /* changeCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "changeCamera@2x.png"; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		A42431D719653277004F138F /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				26FBA221196D7F75004A0714 /* iconfont.ttf */,
 				A42431DC196685D3004F138F /* pickFromAlbum@2x.png */,
 				A42431D819653277004F138F /* changeCamera@2x.png */,
 				A42431D919653277004F138F /* pick@2x.png */,
@@ -251,6 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FBA222196D7F83004A0714 /* iconfont.ttf in Resources */,
 				267E3D1E18DA974900D9911A /* InfoPlist.strings in Resources */,
 				A42431DD196685D3004F138F /* pickFromAlbum@2x.png in Resources */,
 				267E3D2618DA974900D9911A /* Images.xcassets in Resources */,
@@ -405,6 +409,7 @@
 				GCC_PREFIX_HEADER = "Funny Camera/Funny Camera-Prefix.pch";
 				INFOPLIST_FILE = "Funny Camera/Funny Camera-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B322DD57-FE2A-445A-810A-D2416C72ECB9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -423,6 +428,7 @@
 				GCC_PREFIX_HEADER = "Funny Camera/Funny Camera-Prefix.pch";
 				INFOPLIST_FILE = "Funny Camera/Funny Camera-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B322DD57-FE2A-445A-810A-D2416C72ECB9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
