@@ -103,10 +103,13 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSString *result;
     unsigned long imgWidth;
+    NSLog(@"%zu", CGImageGetWidth(image.CGImage));
+    NSLog(@"%zu", CGImageGetHeight(image.CGImage));
     if (CGImageGetWidth(image.CGImage) > CGImageGetHeight(image.CGImage)) {
         UIImage *image2 = [UIImage imageWithCGImage:image.CGImage scale:1.0
-                                        orientation:UIImageOrientationRight];
-        
+                                        orientation:UIImageOrientationLeft];
+        NSLog(@"image2:%zu", CGImageGetWidth(image2.CGImage));
+        NSLog(@"image2:%zu", CGImageGetHeight(image2.CGImage));
         result = [self transformImage:image2.CGImage];
         imgWidth = CGImageGetWidth(image2.CGImage);
     } else {
@@ -115,8 +118,9 @@
     }
     
     if (self.maskView) {
-        self.prevTextView.text = result;
         self.maskView.hidden = NO;
+        self.prevTextView.text = result;
+        self.prevTextView.font = [UIFont fontWithName:@"menlo" size:9.6 * kViewWidth / imgWidth];
     } else {
         self.maskView = [[UIView alloc] initWithFrame:self.view.frame];
         self.maskView.backgroundColor = [UIColor blackColor];
@@ -172,6 +176,7 @@
         //保存到相册
         UIImageWriteToSavedPhotosAlbum(image2, nil, nil, nil);
     });
+    self.maskView.hidden = YES;
 }
 
 - (void)photoImageViewTap
