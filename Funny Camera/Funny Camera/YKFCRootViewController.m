@@ -24,6 +24,7 @@
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UITextView *prevTextView;
 @property (nonatomic, strong) UIView *maskView;
+@property (nonatomic, strong) CALayer *imageLayer;
 @property (nonatomic, assign) unsigned long imageWidth;
 @end
 
@@ -74,9 +75,10 @@
     [self.view addSubview:self.textView];
     
     // 前置摄像头icon
-    self.changeCameraImageBtn = [[UIButton alloc] initWithFrame:CGRectMake(kViewWidth - 34.0, 8.0, 23.0, 23.0)];
-    [self.changeCameraImageBtn setBackgroundImage:[UIImage imageNamed:@"changeCamera"] forState:UIControlStateNormal];
-    [self.changeCameraImageBtn setBackgroundImage:[UIImage imageNamed:@"changeCamera-clicked"] forState:UIControlStateHighlighted];
+    self.changeCameraImageBtn = [[UIButton alloc] initWithFrame:CGRectMake(kViewWidth - 40.0, 2.0, 35.0, 35.0)];
+    [self.changeCameraImageBtn setImage:[UIImage imageNamed:@"changeCamera"] forState:UIControlStateNormal];
+    [self.changeCameraImageBtn setImage:[UIImage imageNamed:@"changeCamera-clicked"] forState:UIControlStateHighlighted];
+    self.changeCameraImageBtn.contentMode = UIViewContentModeCenter;
     [self.view addSubview:self.changeCameraImageBtn];
     [self.changeCameraImageBtn addTarget:self action:@selector(changeCameraImageViewTap) forControlEvents:UIControlEventTouchUpInside];
     
@@ -117,6 +119,7 @@
         self.maskView.hidden = NO;
         self.prevTextView.text = result;
         self.prevTextView.font = [UIFont fontWithName:@"menlo" size:9.6 * kViewWidth / imgWidth];
+        [self.maskView addSubview:self.prevTextView];
     } else {
         self.maskView = [[UIView alloc] initWithFrame:self.view.frame];
         self.maskView.backgroundColor = [UIColor blackColor];
@@ -166,21 +169,30 @@
 - (void)yesTap
 {
     //创建一个layer用来承载UITextView
-    CALayer *layer = [[CALayer alloc] init];
-    layer.frame = self.prevTextView.bounds;
-    [layer addSublayer:self.prevTextView.layer];
+    if (!self.imageLayer) {
+        self.imageLayer = [[CALayer alloc] init];
+        self.imageLayer.frame = self.prevTextView.bounds;
+    }
+    self.imageLayer = self.prevTextView.layer;
     
+
     //用renderInContext方法，把这个layer转成图片
-    UIGraphicsBeginImageContext(layer.bounds.size);
-    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIGraphicsBeginImageContext(self.imageLayer.bounds.size);
+    [self.imageLayer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image2 = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+
+    //保存到相册
+    UIImageWriteToSavedPhotosAlbum(image2, nil, nil, nil);
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //保存到相册
-        UIImageWriteToSavedPhotosAlbum(image2, nil, nil, nil);
-    });
-    self.maskView.hidden = YES;
+    [UIView animateWithDuration: 0.3
+                          delay: 0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.maskView.center = CGPointMake(self.maskView.center.x, self.maskView.center.y + self.maskView.frame.size.height);
+                     } completion:^(BOOL finished) {
+                         self.maskView.hidden = YES;
+                     }];
 }
 
 - (void)photoImageViewTap
@@ -608,6 +620,12 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     return UIInterfaceOrientationMaskPortrait;//只支持这一个方向(正常的方向)
     
+}
+
+// 隐藏statusBar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 @end
