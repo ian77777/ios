@@ -113,6 +113,7 @@
     }
     
     if (self.maskView) {
+        self.maskView.center = self.view.center;
         self.maskView.hidden = NO;
         self.prevTextView.text = result;
         self.prevTextView.font = [UIFont fontWithName:@"menlo" size:9.6 * kViewWidth / imgWidth];
@@ -151,7 +152,15 @@
 #pragma mark - TapEvent
 - (void)noTap
 {
-    self.maskView.hidden = YES;
+    [UIView animateWithDuration: 0.3
+                          delay: 0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.maskView.center = CGPointMake(self.maskView.center.x, self.maskView.center.y + self.maskView.frame.size.height);
+                     } completion:^(BOOL finished) {
+                         self.maskView.hidden = YES;
+                     }];
+    
 }
 
 - (void)yesTap
@@ -573,6 +582,31 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     
     return imageCopy;
+    
+}
+
+// 禁止屏幕旋转
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+
+{
+    
+    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+    
+}
+
+- (BOOL)shouldAutorotate
+
+{
+    
+    return NO;
+    
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+
+{
+    
+    return UIInterfaceOrientationMaskPortrait;//只支持这一个方向(正常的方向)
     
 }
 
