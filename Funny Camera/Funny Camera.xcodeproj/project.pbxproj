@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2668FE65197CBE2500307A2A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2668FE63197CBE2500307A2A /* Icon.png */; };
 		2668FE66197CBE2500307A2A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2668FE64197CBE2500307A2A /* Icon@2x.png */; };
+		2668FF00197E3BA100307A2A /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2668FEFF197E3BA100307A2A /* iTunesArtwork@2x.png */; };
 		267E3D1418DA974900D9911A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267E3D1318DA974900D9911A /* Foundation.framework */; };
 		267E3D1618DA974900D9911A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267E3D1518DA974900D9911A /* CoreGraphics.framework */; };
 		267E3D1818DA974900D9911A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267E3D1718DA974900D9911A /* UIKit.framework */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		2668FE63197CBE2500307A2A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		2668FE64197CBE2500307A2A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		2668FEFF197E3BA100307A2A /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		267E3D1018DA974900D9911A /* Funny Camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Funny Camera.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		267E3D1318DA974900D9911A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		267E3D1518DA974900D9911A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -187,6 +189,7 @@
 		A42431D719653277004F138F /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				2668FEFF197E3BA100307A2A /* iTunesArtwork@2x.png */,
 				2668FE63197CBE2500307A2A /* Icon.png */,
 				2668FE64197CBE2500307A2A /* Icon@2x.png */,
 				A43AE968197778FC0077DEC3 /* Icon-60@2x.png */,
@@ -286,6 +289,7 @@
 				2668FE66197CBE2500307A2A /* Icon@2x.png in Resources */,
 				A4B0481B196E7709007CF4F5 /* pickFromAlbum-clicked@2x.png in Resources */,
 				A4B04816196E7709007CF4F5 /* changeCamera-clicked@2x.png in Resources */,
+				2668FF00197E3BA100307A2A /* iTunesArtwork@2x.png in Resources */,
 				A43AE96B197778FC0077DEC3 /* Icon-60@2x.png in Resources */,
 				A4B04821196E7CCC007CF4F5 /* no-clicked@2x.png in Resources */,
 				A4B04823196E7CCC007CF4F5 /* yes-clicked@2x.png in Resources */,
