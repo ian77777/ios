@@ -21,17 +21,22 @@
 @property (nonatomic, strong) UIButton *changeCameraImageBtn;
 @property (nonatomic, strong) UIButton *pickImageBtn;
 @property (nonatomic, strong) UIButton *photoImageBtn;
+@property (nonatomic, strong) UILabel *changeMode;
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UITextView *prevTextView;
 @property (nonatomic, strong) UIView *maskView;
 @property (nonatomic, strong) CALayer *imageLayer;
 @property (nonatomic, assign) unsigned long imageWidth;
+@property (nonatomic, strong) UIColor *bgColor;
+@property (nonatomic, strong) UIColor *textColor;
 @end
 
 @implementation YKFCRootViewController
 
 - (void)viewDidLoad {
     self.view.backgroundColor = [UIColor blackColor];
+    self.bgColor = [UIColor whiteColor];
+    self.textColor = [UIColor blackColor];
     [self initCapture];
 }
 //初始化AVCaptureSession，添加输入，输出源
@@ -66,8 +71,8 @@
     
     // 文字流区域
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 40.0, kViewWidth, kViewWidth * 4 / 3)];
-    self.textView.textColor = [UIColor blackColor];
-    self.textView.backgroundColor = [UIColor whiteColor];
+    self.textView.textColor = self.textColor;
+    self.textView.backgroundColor = self.bgColor;
     self.textView.delegate = self;
     self.textView.editable = NO;//不可编辑
     self.textView.scrollEnabled = NO;//不可滚动
@@ -95,6 +100,14 @@
     [self.photoImageBtn setBackgroundImage:[UIImage imageNamed:@"pickFromAlbum-clicked"] forState:UIControlStateHighlighted];
     [self.view addSubview:self.photoImageBtn];
     [self.photoImageBtn addTarget:self action:@selector(photoImageViewTap) forControlEvents:UIControlEventTouchUpInside];
+    
+    // 切换Mode
+    self.changeMode = [[UILabel alloc] initWithFrame:CGRectMake(kViewWidth - 15.0 - 46.0, 40.0 + self.textView.frame.size.height + 39.0, 46.0, 35.0)];
+    self.changeMode.text = @"MODE";
+    self.changeMode.font = [UIFont systemFontOfSize:12.0];
+    self.changeMode.textColor = [UIColor whiteColor];
+    self.changeMode.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.changeMode];
 }
 
 #pragma mark - image picker delegte
@@ -125,8 +138,8 @@
         self.maskView.backgroundColor = [UIColor blackColor];
         
         self.prevTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 40.0, kViewWidth, kViewWidth * 4 / 3)];
-        self.prevTextView.textColor = [UIColor blackColor];
-        self.prevTextView.backgroundColor = [UIColor whiteColor];
+        self.prevTextView.textColor = self.textColor;
+        self.prevTextView.backgroundColor = self.bgColor;
         self.prevTextView.delegate = self;
         self.prevTextView.editable = NO;//不可编辑
         self.prevTextView.scrollEnabled = NO;//不可滚动
@@ -193,6 +206,21 @@
                      } completion:^(BOOL finished) {
                          self.maskView.hidden = YES;
                      }];
+}
+
+- (void)changeModeTap
+{
+    if ([self.textColor isEqual:[UIColor blackColor]]) {
+        self.bgColor = [UIColor blackColor];
+        self.textColor = [UIColor greenColor];
+    } else {
+        self.bgColor = [UIColor whiteColor];
+        self.textColor = [UIColor blackColor];
+    }
+    if (self.prevTextView) {
+        self.prevTextView.textColor = self.textColor;
+        self.prevTextView.backgroundColor = self.bgColor;
+    }
 }
 
 - (void)photoImageViewTap
@@ -267,8 +295,8 @@
      ];
     
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, kViewWidth * 4 / 3)];
-    textView.textColor = [UIColor blackColor];
-    textView.backgroundColor = [UIColor whiteColor];
+    textView.textColor = self.textColor;
+    textView.backgroundColor = self.bgColor;
     textView.delegate = self;
     [textView setTextAlignment:NSTextAlignmentCenter];
     textView.text = self.textView.text;
