@@ -73,6 +73,7 @@
     self.textView.scrollEnabled = NO;//不可滚动
     [self.textView setTextAlignment:NSTextAlignmentCenter];
     [self.view addSubview:self.textView];
+    [self.textView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeMode)]];
     
     // 前置摄像头icon
     self.changeCameraImageBtn = [[UIButton alloc] initWithFrame:CGRectMake(kViewWidth - 40.0, 2.0, 35.0, 35.0)];
@@ -125,8 +126,8 @@
         self.maskView.backgroundColor = [UIColor blackColor];
         
         self.prevTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 40.0, kViewWidth, kViewWidth * 4 / 3)];
-        self.prevTextView.textColor = [UIColor blackColor];
-        self.prevTextView.backgroundColor = [UIColor whiteColor];
+        self.prevTextView.textColor = self.textView.textColor;
+        self.prevTextView.backgroundColor = self.textView.backgroundColor;
         self.prevTextView.delegate = self;
         self.prevTextView.editable = NO;//不可编辑
         self.prevTextView.scrollEnabled = NO;//不可滚动
@@ -153,6 +154,17 @@
 }
 
 #pragma mark - TapEvent
+- (void)changeMode
+{
+    if ([self.textView.backgroundColor isEqual:[UIColor whiteColor]]) {
+        self.textView.backgroundColor = [UIColor blackColor];
+        self.textView.textColor = [UIColor greenColor];
+    } else {
+        self.textView.backgroundColor = [UIColor whiteColor];
+        self.textView.textColor = [UIColor blackColor];
+    }
+}
+
 - (void)noTap
 {
     [UIView animateWithDuration: 0.3
@@ -267,8 +279,8 @@
      ];
     
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, kViewWidth * 4 / 3)];
-    textView.textColor = [UIColor blackColor];
-    textView.backgroundColor = [UIColor whiteColor];
+    textView.textColor = self.textView.textColor;
+    textView.backgroundColor = self.textView.backgroundColor;
     textView.delegate = self;
     [textView setTextAlignment:NSTextAlignmentCenter];
     textView.text = self.textView.text;
