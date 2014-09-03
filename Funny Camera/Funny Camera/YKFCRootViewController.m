@@ -78,7 +78,7 @@
     self.textView.scrollEnabled = NO;//不可滚动
     [self.textView setTextAlignment:NSTextAlignmentCenter];
     [self.view addSubview:self.textView];
-    [self.textView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeMode)]];
+    [self.textView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeModeEvent)]];
     
     // 前置摄像头icon
     self.changeCameraImageBtn = [[UIButton alloc] initWithFrame:CGRectMake(kViewWidth - 40.0, 2.0, 35.0, 35.0)];
@@ -109,6 +109,8 @@
     self.changeMode.textColor = [UIColor whiteColor];
     self.changeMode.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.changeMode];
+    self.changeMode.userInteractionEnabled = YES;
+    [self.changeMode addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeModeEvent)]];
 }
 
 #pragma mark - image picker delegte
@@ -139,13 +141,8 @@
         self.maskView.backgroundColor = [UIColor blackColor];
         
         self.prevTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 40.0, kViewWidth, kViewWidth * 4 / 3)];
-<<<<<<< HEAD
         self.prevTextView.textColor = self.textView.textColor;
         self.prevTextView.backgroundColor = self.textView.backgroundColor;
-=======
-        self.prevTextView.textColor = self.textColor;
-        self.prevTextView.backgroundColor = self.bgColor;
->>>>>>> e61d4623e6ba727e7eeaab446f4dc421b6c08321
         self.prevTextView.delegate = self;
         self.prevTextView.editable = NO;//不可编辑
         self.prevTextView.scrollEnabled = NO;//不可滚动
@@ -172,7 +169,7 @@
 }
 
 #pragma mark - TapEvent
-- (void)changeMode
+- (void)changeModeEvent
 {
     if ([self.textView.backgroundColor isEqual:[UIColor whiteColor]]) {
         self.textView.backgroundColor = [UIColor blackColor];
@@ -223,21 +220,6 @@
                      } completion:^(BOOL finished) {
                          self.maskView.hidden = YES;
                      }];
-}
-
-- (void)changeModeTap
-{
-    if ([self.textColor isEqual:[UIColor blackColor]]) {
-        self.bgColor = [UIColor blackColor];
-        self.textColor = [UIColor greenColor];
-    } else {
-        self.bgColor = [UIColor whiteColor];
-        self.textColor = [UIColor blackColor];
-    }
-    if (self.prevTextView) {
-        self.prevTextView.textColor = self.textColor;
-        self.prevTextView.backgroundColor = self.bgColor;
-    }
 }
 
 - (void)photoImageViewTap
@@ -312,13 +294,8 @@
      ];
     
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, kViewWidth * 4 / 3)];
-<<<<<<< HEAD
     textView.textColor = self.textView.textColor;
     textView.backgroundColor = self.textView.backgroundColor;
-=======
-    textView.textColor = self.textColor;
-    textView.backgroundColor = self.bgColor;
->>>>>>> e61d4623e6ba727e7eeaab446f4dc421b6c08321
     textView.delegate = self;
     [textView setTextAlignment:NSTextAlignmentCenter];
     textView.text = self.textView.text;

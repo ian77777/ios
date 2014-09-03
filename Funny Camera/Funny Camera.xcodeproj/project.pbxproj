@@ -52,7 +52,7 @@
 		2668FE63197CBE2500307A2A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		2668FE64197CBE2500307A2A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		2668FEFF197E3BA100307A2A /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		267E3D1018DA974900D9911A /* Funny Camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Funny Camera.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		267E3D1018DA974900D9911A /* ASCII Art Camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ASCII Art Camera.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		267E3D1318DA974900D9911A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		267E3D1518DA974900D9911A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		267E3D1718DA974900D9911A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -124,7 +124,7 @@
 		267E3D1118DA974900D9911A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				267E3D1018DA974900D9911A /* Funny Camera.app */,
+				267E3D1018DA974900D9911A /* ASCII Art Camera.app */,
 				267E3D2B18DA974900D9911A /* Funny CameraTests.xctest */,
 			);
 			name = Products;
@@ -226,7 +226,7 @@
 			);
 			name = "Funny Camera";
 			productName = "Funny Camera";
-			productReference = 267E3D1018DA974900D9911A /* Funny Camera.app */;
+			productReference = 267E3D1018DA974900D9911A /* ASCII Art Camera.app */;
 			productType = "com.apple.product-type.application";
 		};
 		267E3D2A18DA974900D9911A /* Funny CameraTests */ = {
@@ -445,7 +445,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: BINGYE YU (9NV7GT7HEF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: BINGYE YU (7J4WZFC6KC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: BINGYE YU (7J4WZFC6KC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -457,7 +458,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "ASCII Art Camera";
-				PROVISIONING_PROFILE = "DB633D4E-C5FD-4EE7-9270-6FA6E3A9D42C";
+				PROVISIONING_PROFILE = "B322DD57-FE2A-445A-810A-D2416C72ECB9";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -468,7 +469,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: BINGYE YU (9NV7GT7HEF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: BINGYE YU (7J4WZFC6KC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: BINGYE YU (7J4WZFC6KC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -479,7 +481,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "ASCII Art Camera";
-				PROVISIONING_PROFILE = "DB633D4E-C5FD-4EE7-9270-6FA6E3A9D42C";
+				PROVISIONING_PROFILE = "B322DD57-FE2A-445A-810A-D2416C72ECB9";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
