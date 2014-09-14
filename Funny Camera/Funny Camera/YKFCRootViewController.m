@@ -14,7 +14,7 @@
 #import <CoreMedia/CoreMedia.h>
 
 #define kViewWidth (self.view.frame.size.width)
-#define kViewHeight (self.view.window.frame.size.height)
+#define kViewHeight (self.view.frame.size.height)
 
 @interface YKFCRootViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) AVCaptureSession *captureSession;
@@ -29,6 +29,7 @@
 @property (nonatomic, assign) unsigned long imageWidth;
 @property (nonatomic, strong) UIColor *bgColor;
 @property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIView *bgView;
 @end
 
 @implementation YKFCRootViewController
@@ -88,6 +89,12 @@
     [self.view addSubview:self.changeCameraImageBtn];
     [self.changeCameraImageBtn addTarget:self action:@selector(changeCameraImageViewTap) forControlEvents:UIControlEventTouchUpInside];
     
+    if (kViewHeight < 500) {
+        self.bgView = [[UIView alloc] initWithFrame:CGRectMake(0, kViewHeight - 77.0, kViewWidth, 77.0)];
+        self.bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+        [self.view addSubview:self.bgView];
+    }
+    
     // 拍照icon
     self.pickImageBtn = [[UIButton alloc] initWithFrame:CGRectMake((kViewWidth - 66.0) / 2.0, 40.0 + self.textView.frame.size.height + 24.0, 66.0, 57.0)];
     [self.pickImageBtn setBackgroundImage:[UIImage imageNamed:@"pick"] forState:UIControlStateNormal];
@@ -111,6 +118,18 @@
     [self.view addSubview:self.changeMode];
     self.changeMode.userInteractionEnabled = YES;
     [self.changeMode addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeModeEvent)]];
+    
+    if (kViewHeight < 500) {
+        self.photoImageBtn.hidden = YES;
+        
+        CGRect pickImageBtnFrame = self.pickImageBtn.frame;
+        pickImageBtnFrame.origin.y = kViewHeight - 65.0;
+        self.pickImageBtn.frame = pickImageBtnFrame;
+        
+        CGRect changeModeFrame = self.changeMode.frame;
+        changeModeFrame.origin.y = kViewHeight - 52.0;
+        self.changeMode.frame = changeModeFrame;
+    }
 }
 
 #pragma mark - image picker delegte
@@ -135,7 +154,6 @@
         self.maskView.hidden = NO;
         self.prevTextView.text = result;
         self.prevTextView.font = [UIFont fontWithName:@"menlo" size:9.6 * kViewWidth / imgWidth];
-        [self.maskView addSubview:self.prevTextView];
     } else {
         self.maskView = [[UIView alloc] initWithFrame:self.view.frame];
         self.maskView.backgroundColor = [UIColor blackColor];
@@ -151,6 +169,12 @@
         self.prevTextView.font = [UIFont fontWithName:@"menlo" size:9.6 * kViewWidth / imgWidth];
         [self.maskView addSubview:self.prevTextView];
         
+        if (kViewHeight < 500) {
+            UIView *bgView2 = [[UIView alloc] initWithFrame:CGRectMake(0, kViewHeight - 69.0, kViewWidth, 69.0)];
+            bgView2.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+            [self.maskView addSubview:bgView2];
+        }
+        
         UIButton *yesBtn = [[UIButton alloc] initWithFrame:CGRectMake(189.0, 40.0 + self.textView.frame.size.height + 27.0, 48.0, 49.0)];
         [yesBtn setBackgroundImage:[UIImage imageNamed:@"yes"] forState:UIControlStateNormal];
         [yesBtn setBackgroundImage:[UIImage imageNamed:@"yes-clicked"] forState:UIControlStateHighlighted];
@@ -162,6 +186,20 @@
         [noBtn setBackgroundImage:[UIImage imageNamed:@"no-clicked"] forState:UIControlStateHighlighted];
         [self.maskView addSubview:noBtn];
         [noBtn addTarget:self action:@selector(noTap) forControlEvents:UIControlEventTouchUpInside];
+        
+        if (kViewHeight < 500) {
+            CGRect yesBtnFrame = yesBtn.frame;
+            yesBtnFrame.origin.y = kViewHeight - 59.0;
+            yesBtn.frame = yesBtnFrame;
+            
+            CGRect noBtnFrame = noBtn.frame;
+            noBtnFrame.origin.y = kViewHeight - 59.0;
+            noBtn.frame = noBtnFrame;
+            
+            CGRect prevTextViewFrame = self.prevTextView.frame;
+            prevTextViewFrame.origin.y = 0  ;
+            self.prevTextView.frame = prevTextViewFrame;
+        }
         
         [self.view addSubview:self.maskView];
     }
