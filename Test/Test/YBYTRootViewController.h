@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YBYTRootViewController : UIViewController
+@interface YBYTRootViewController : UIViewController<UIWebViewDelegate>
 
 @end
