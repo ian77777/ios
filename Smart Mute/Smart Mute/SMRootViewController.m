@@ -23,7 +23,8 @@
 - (id)init
 {
     if (self = [super init]) {
-        self.title = @"工作要静音";
+        self.title = @"工作时间静音";
+        self.view.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
@@ -33,10 +34,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.muteLabel = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 200.0, 50.0)];
     self.muteLabel.backgroundColor = [UIColor whiteColor];
-    self.muteLabel.titleLabel.font = [UIFont systemFontOfSize:18.0];
+    self.muteLabel.titleLabel.font = [UIFont systemFontOfSize:20.0];
     self.muteLabel.hidden = YES;
-    [self.muteLabel.layer setBorderWidth:1.0];
-    self.muteLabel.layer.cornerRadius = 10.0;
+//    [self.muteLabel.layer setBorderWidth:1.0];
+//    self.muteLabel.layer.cornerRadius = 10.0;
     self.muteLabel.layer.masksToBounds = YES;
     
     CGRect frame = self.muteLabel.frame;
@@ -57,7 +58,7 @@
     self.muteLabel.hidden = NO;
     [self.muteLabel setTitle:@"已静音" forState:UIControlStateNormal];
     [self.muteLabel setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [self.muteLabel.layer setBorderColor:[UIColor redColor].CGColor];
+//    [self.muteLabel.layer setBorderColor:[UIColor redColor].CGColor];
 }
 
 - (void)setSoundStatus
@@ -65,12 +66,13 @@
     self.muteLabel.hidden = NO;
     [self.muteLabel setTitle:@"已开启声音" forState:UIControlStateNormal];
     [self.muteLabel setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    [self.muteLabel.layer setBorderColor:[UIColor greenColor].CGColor];
+//    [self.muteLabel.layer setBorderColor:[UIColor greenColor].CGColor];
 }
 
 - (void)setting
 {
     SMSettingViewController *settingVC = [[SMSettingViewController alloc] init];
+    [self.navigationController pushViewController:settingVC animated:YES];
 }
 
 @end

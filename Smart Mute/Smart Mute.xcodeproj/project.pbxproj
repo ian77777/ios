@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2692ABD11A00ABAC00C65D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2692ABCF1A00ABAC00C65D1C /* Main.storyboard */; };
+		2692ABD41A00B3FB00C65D1C /* SMPickStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692ABD31A00B3FB00C65D1C /* SMPickStyleTableViewCell.m */; };
 		A4A6534C19FF81EC00B3C9D1 /* SMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A6534B19FF81EC00B3C9D1 /* SMSettingViewController.m */; };
 		A4E21CE919FF3E0200BB1F8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E21CE819FF3E0200BB1F8A /* main.m */; };
 		A4E21CEC19FF3E0200BB1F8A /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E21CEB19FF3E0200BB1F8A /* SMAppDelegate.m */; };
@@ -27,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2692ABD01A00ABAC00C65D1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2692ABD21A00B3FB00C65D1C /* SMPickStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPickStyleTableViewCell.h; sourceTree = "<group>"; };
+		2692ABD31A00B3FB00C65D1C /* SMPickStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPickStyleTableViewCell.m; sourceTree = "<group>"; };
 		A4A6534A19FF81EC00B3C9D1 /* SMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSettingViewController.h; sourceTree = "<group>"; };
 		A4A6534B19FF81EC00B3C9D1 /* SMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSettingViewController.m; sourceTree = "<group>"; };
 		A4E21CE319FF3E0200BB1F8A /* Smart Mute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Mute.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,10 +92,13 @@
 				A4E21CED19FF3E0200BB1F8A /* SMRootViewController.h */,
 				A4E21CEE19FF3E0200BB1F8A /* SMRootViewController.m */,
 				A4E21CF319FF3E0200BB1F8A /* Images.xcassets */,
+				2692ABCF1A00ABAC00C65D1C /* Main.storyboard */,
 				A4E21CF519FF3E0200BB1F8A /* LaunchScreen.xib */,
 				A4E21CE619FF3E0200BB1F8A /* Supporting Files */,
 				A4A6534A19FF81EC00B3C9D1 /* SMSettingViewController.h */,
 				A4A6534B19FF81EC00B3C9D1 /* SMSettingViewController.m */,
+				2692ABD21A00B3FB00C65D1C /* SMPickStyleTableViewCell.h */,
+				2692ABD31A00B3FB00C65D1C /* SMPickStyleTableViewCell.m */,
 			);
 			path = "Smart Mute";
 			sourceTree = "<group>";
@@ -201,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2692ABD11A00ABAC00C65D1C /* Main.storyboard in Resources */,
 				A4E21CF719FF3E0200BB1F8A /* LaunchScreen.xib in Resources */,
 				A4E21CF419FF3E0200BB1F8A /* Images.xcassets in Resources */,
 			);
@@ -222,6 +231,7 @@
 			files = (
 				A4E21CEF19FF3E0200BB1F8A /* SMRootViewController.m in Sources */,
 				A4A6534C19FF81EC00B3C9D1 /* SMSettingViewController.m in Sources */,
+				2692ABD41A00B3FB00C65D1C /* SMPickStyleTableViewCell.m in Sources */,
 				A4E21CEC19FF3E0200BB1F8A /* SMAppDelegate.m in Sources */,
 				A4E21CE919FF3E0200BB1F8A /* main.m in Sources */,
 			);
@@ -246,6 +256,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2692ABCF1A00ABAC00C65D1C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2692ABD01A00ABAC00C65D1C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		A4E21CF519FF3E0200BB1F8A /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
