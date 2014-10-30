@@ -8,9 +8,13 @@
 
 #import "SMSettingViewController.h"
 #import "SMPickStyleTableViewCell.h"
+#import "SMWorkdayTableViewController.h"
+#import "SMCommonDefine.h"
 
 @interface SMSettingViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong)UITableView *settingTableView;
+@property(nonatomic, strong)NSArray *oldWorkday;
+@property(nonatomic, strong)NSUserDefaults *userDefaults;
 @end
 
 @implementation SMSettingViewController
@@ -20,6 +24,8 @@
     if (self = [super init]) {
         self.title = @"设置";
         self.view.backgroundColor = [UIColor whiteColor];
+        self.userDefaults = [NSUserDefaults standardUserDefaults];
+        self.oldWorkday = [NSArray arrayWithArray:[self.userDefaults arrayForKey:kSMWorkday]];
     }
     return self;
 }
@@ -32,6 +38,23 @@
     self.settingTableView.delegate = self;
     [self.view addSubview:self.settingTableView];
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(save)];
+    
+}
+
+- (void)dismiss
+{
+    [self.userDefaults setObject:self.oldWorkday forKey:kSMWorkday];
+    [self.userDefaults synchronize];
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+
+- (void)save
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -64,10 +87,29 @@
     } else {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         cell.textLabel.text = @"工作日";
-        cell.detailTextLabel.text = @"周一";
+        NSArray *sortedArray = [[self.userDefaults arrayForKey:kSMWorkday] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            NSString *a = obj1;
+            NSString *b = obj2;
+            return [a compare:b];
+        }];
+        cell.detailTextLabel.text = [sortedArray componentsJoinedByString:@" "];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2) {
+        SMWorkdayTableViewController *workdayTableViewController = [[SMWorkdayTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:workdayTableViewController animated:YES];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.settingTableView reloadData];
 }
 
 @end

@@ -10,6 +10,7 @@
 		2692ABD11A00ABAC00C65D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2692ABCF1A00ABAC00C65D1C /* Main.storyboard */; };
 		2692ABD41A00B3FB00C65D1C /* SMPickStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2692ABD31A00B3FB00C65D1C /* SMPickStyleTableViewCell.m */; };
 		A4A6534C19FF81EC00B3C9D1 /* SMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A6534B19FF81EC00B3C9D1 /* SMSettingViewController.m */; };
+		A4C149651A01DE6E00241CB8 /* SMWorkdayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C149641A01DE6E00241CB8 /* SMWorkdayTableViewController.m */; };
 		A4E21CE919FF3E0200BB1F8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E21CE819FF3E0200BB1F8A /* main.m */; };
 		A4E21CEC19FF3E0200BB1F8A /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E21CEB19FF3E0200BB1F8A /* SMAppDelegate.m */; };
 		A4E21CEF19FF3E0200BB1F8A /* SMRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E21CEE19FF3E0200BB1F8A /* SMRootViewController.m */; };
@@ -34,6 +35,9 @@
 		2692ABD31A00B3FB00C65D1C /* SMPickStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPickStyleTableViewCell.m; sourceTree = "<group>"; };
 		A4A6534A19FF81EC00B3C9D1 /* SMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSettingViewController.h; sourceTree = "<group>"; };
 		A4A6534B19FF81EC00B3C9D1 /* SMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSettingViewController.m; sourceTree = "<group>"; };
+		A4C149631A01DE6E00241CB8 /* SMWorkdayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMWorkdayTableViewController.h; sourceTree = "<group>"; };
+		A4C149641A01DE6E00241CB8 /* SMWorkdayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWorkdayTableViewController.m; sourceTree = "<group>"; };
+		A4C149661A01EA7500241CB8 /* SMCommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCommonDefine.h; sourceTree = "<group>"; };
 		A4E21CE319FF3E0200BB1F8A /* Smart Mute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Mute.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E21CE719FF3E0200BB1F8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4E21CE819FF3E0200BB1F8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -99,6 +103,9 @@
 				A4A6534B19FF81EC00B3C9D1 /* SMSettingViewController.m */,
 				2692ABD21A00B3FB00C65D1C /* SMPickStyleTableViewCell.h */,
 				2692ABD31A00B3FB00C65D1C /* SMPickStyleTableViewCell.m */,
+				A4C149631A01DE6E00241CB8 /* SMWorkdayTableViewController.h */,
+				A4C149641A01DE6E00241CB8 /* SMWorkdayTableViewController.m */,
+				A4C149661A01EA7500241CB8 /* SMCommonDefine.h */,
 			);
 			path = "Smart Mute";
 			sourceTree = "<group>";
@@ -234,6 +241,7 @@
 				2692ABD41A00B3FB00C65D1C /* SMPickStyleTableViewCell.m in Sources */,
 				A4E21CEC19FF3E0200BB1F8A /* SMAppDelegate.m in Sources */,
 				A4E21CE919FF3E0200BB1F8A /* main.m in Sources */,
+				A4C149651A01DE6E00241CB8 /* SMWorkdayTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
