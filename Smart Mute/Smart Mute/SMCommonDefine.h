@@ -9,3 +9,5 @@
 #import <Foundation/Foundation.h>
 
 #define kSMWorkday @"kSMWorkday"
+#define kSMWorkStartTime @"kSMWorkStartTime"
+#define kSMWorkEndTime @"kSMWorkEndTime"

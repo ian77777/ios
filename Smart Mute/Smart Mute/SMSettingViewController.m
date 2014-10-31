@@ -77,22 +77,39 @@
     return nil;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2) {
+        return 44.0;
+    } else {
+        return 216.0;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
+    SMPickStyleTableViewCell *cell;
     if (indexPath.section == 0) {
-        cell = [[SMPickStyleTableViewCell alloc] initWithType:kSMPickViewTypeStart];
+        cell = [[SMPickStyleTableViewCell alloc] initWithType:kSMPickViewTypeStart withStyle:UITableViewCellStyleDefault];
+        if ([self.userDefaults objectForKey:kSMWorkStartTime]) {
+            [cell selectPickViewWithDate:[self.userDefaults objectForKey:kSMWorkStartTime]];
+        } else {
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:1];
+            [cell selectPickViewWithDate:date];
+        }
     } else if (indexPath.section == 1) {
-        cell = [[SMPickStyleTableViewCell alloc] initWithType:kSMPickViewTypeEnd];
+        cell = [[SMPickStyleTableViewCell alloc] initWithType:kSMPickViewTypeEnd withStyle:UITableViewCellStyleDefault];
+        if ([self.userDefaults objectForKey:kSMWorkEndTime]) {
+            [cell selectPickViewWithDate:[self.userDefaults objectForKey:kSMWorkEndTime]];
+        } else {
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:1];
+            [cell selectPickViewWithDate:date];
+        }
     } else {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+        cell = [[SMPickStyleTableViewCell alloc] initWithType:kSMPickViewTypeNone withStyle:UITableViewCellStyleValue1];
         cell.textLabel.text = @"工作日";
-        NSArray *sortedArray = [[self.userDefaults arrayForKey:kSMWorkday] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-            NSString *a = obj1;
-            NSString *b = obj2;
-            return [a compare:b];
-        }];
-        cell.detailTextLabel.text = [sortedArray componentsJoinedByString:@" "];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.detailTextLabel.text = [[self.userDefaults arrayForKey:kSMWorkday] componentsJoinedByString:@" "];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     return cell;
