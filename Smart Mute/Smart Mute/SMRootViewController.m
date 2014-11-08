@@ -78,6 +78,29 @@
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSDate *startDate = [[NSUserDefaults standardUserDefaults] objectForKey:kSMWorkStartTime];
+    NSDate *endDate = [[NSUserDefaults standardUserDefaults] objectForKey:kSMWorkEndTime];
+    NSDate *nowDate = [NSDate date];
+    unsigned units = NSCalendarUnitHour | NSCalendarUnitMinute;
+    NSCalendar *myCal = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comp = [myCal components:units fromDate:nowDate];
+    NSInteger hour = [comp hour];
+    NSInteger minute = [comp minute];
+    NSDate *zeroDate = [NSDate dateWithTimeIntervalSince1970:0];
+    NSTimeZone *nowTimeZone = [NSTimeZone localTimeZone];
+    NSInteger timeOffset = [nowTimeZone secondsFromGMTForDate:zeroDate];
+    NSDate *newNowDate = [zeroDate dateByAddingTimeInterval:-timeOffset + hour*3600 + minute*60];
+    
+    if ([startDate compare:newNowDate] == NSOrderedAscending && [newNowDate compare:endDate] == NSOrderedAscending) {
+        [self setMuteStatus];
+    } else {
+        [self setSoundStatus];
+    }
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];

@@ -17,4 +17,5 @@ typedef NS_ENUM(NSInteger, kSMPickViewType) {
 @interface SMPickStyleTableViewCell : UITableViewCell
 - (id)initWithType:(kSMPickViewType)pickViewType withStyle:(UITableViewCellStyle)cellStyle;
 - (void)selectPickViewWithDate:(NSDate *)date;
+- (NSDate *)getCurrentDate;
 @end
