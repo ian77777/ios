@@ -38,7 +38,10 @@
     self.settingTableView.delegate = self;
     [self.view addSubview:self.settingTableView];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
+    // 有设置过
+    if ([self.userDefaults objectForKey:kSMWorkStartTime]) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
+    }
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(save)];
     
 }
@@ -91,26 +94,28 @@
     SMPickStyleTableViewCell *cell;
     if (indexPath.section == 0) {
         cell = [[SMPickStyleTableViewCell alloc] initWithType:kSMPickViewTypeStart withStyle:UITableViewCellStyleDefault];
-        if ([self.userDefaults objectForKey:kSMWorkStartTime]) {
-            [cell selectPickViewWithDate:[self.userDefaults objectForKey:kSMWorkStartTime]];
-        } else {
-            NSDate *date = [NSDate dateWithTimeIntervalSince1970:1];
-            [cell selectPickViewWithDate:date];
+        if (![self.userDefaults objectForKey:kSMWorkStartTime]) {
+            [self.userDefaults setObject:[NSDate dateWithTimeIntervalSince1970:8.5*60*60] forKey:kSMWorkStartTime];
+            [self.userDefaults synchronize];
         }
+        [cell selectPickViewWithDate:[self.userDefaults objectForKey:kSMWorkStartTime]];
     } else if (indexPath.section == 1) {
         cell = [[SMPickStyleTableViewCell alloc] initWithType:kSMPickViewTypeEnd withStyle:UITableViewCellStyleDefault];
-        if ([self.userDefaults objectForKey:kSMWorkEndTime]) {
-            [cell selectPickViewWithDate:[self.userDefaults objectForKey:kSMWorkEndTime]];
-        } else {
-            NSDate *date = [NSDate dateWithTimeIntervalSince1970:1];
-            [cell selectPickViewWithDate:date];
+        if (![self.userDefaults objectForKey:kSMWorkEndTime]) {
+            [self.userDefaults setObject:[NSDate dateWithTimeIntervalSince1970:17*60*60] forKey:kSMWorkEndTime];
+            [self.userDefaults synchronize];
         }
+        [cell selectPickViewWithDate:[self.userDefaults objectForKey:kSMWorkEndTime]];
     } else {
         cell = [[SMPickStyleTableViewCell alloc] initWithType:kSMPickViewTypeNone withStyle:UITableViewCellStyleValue1];
         cell.textLabel.text = @"工作日";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.detailTextLabel.text = [[self.userDefaults arrayForKey:kSMWorkday] componentsJoinedByString:@" "];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if (![self.userDefaults objectForKey:kSMWorkday]) {
+            [self.userDefaults setObject:[NSArray arrayWithObjects:@"周一", @"周二", @"周三", @"周四", @"周五", nil] forKey:kSMWorkday];
+            [self.userDefaults synchronize];
+        }
+        cell.detailTextLabel.text = [[self.userDefaults arrayForKey:kSMWorkday] componentsJoinedByString:@" "];
     }
     return cell;
 }

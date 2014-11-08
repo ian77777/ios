@@ -48,19 +48,8 @@
     
     [self.view addSubview:self.muteLabel];
     
-    [self setSoundStatus];
-    
     // 设置右上角按钮
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting)];
-    
-    // 取设置
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([userDefaults arrayForKey:kSMWorkday]) {
-        
-    } else {
-        [userDefaults setObject:[NSArray arrayWithObjects:@"周一", @"周二", @"周三", @"周四", @"周五", nil] forKey:kSMWorkday];
-        [userDefaults synchronize];
-    }
 }
 
 - (void)setMuteStatus
@@ -87,6 +76,15 @@
     [self.navigationController presentViewController:modalNavController animated:YES completion:^{
         
     }];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kSMWorkStartTime]) {
+        [self setting];
+    }
 }
 
 @end
