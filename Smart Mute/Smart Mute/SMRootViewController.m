@@ -16,6 +16,7 @@
 @interface SMRootViewController ()
 
 @property(nonatomic, strong) UIButton *muteLabel;
+@property(nonatomic, strong) UISlider *slider;
 
 @end
 
@@ -68,6 +69,16 @@
 //    [self.muteLabel.layer setBorderColor:[UIColor greenColor].CGColor];
 }
 
+- (void)setMute
+{
+    
+}
+
+- (void)setSound
+{
+
+}
+
 - (void)setting
 {
     SMSettingViewController *settingVC = [[SMSettingViewController alloc] init];
@@ -95,8 +106,10 @@
     NSDate *newNowDate = [zeroDate dateByAddingTimeInterval:-timeOffset + hour*3600 + minute*60];
     
     if ([startDate compare:newNowDate] == NSOrderedAscending && [newNowDate compare:endDate] == NSOrderedAscending) {
+        [self setMute];
         [self setMuteStatus];
     } else {
+        [self setSound];
         [self setSoundStatus];
     }
 }
