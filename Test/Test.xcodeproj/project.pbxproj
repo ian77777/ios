@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26788D0E1A597A4000CD18DE /* H5Service.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788D0D1A597A4000CD18DE /* H5Service.framework */; };
+		26788D101A597A4900CD18DE /* Poseidon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788D0F1A597A4900CD18DE /* Poseidon.framework */; };
+		26788D131A597A5500CD18DE /* H5Service.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26788D111A597A5500CD18DE /* H5Service.bundle */; };
+		26788D141A597A5500CD18DE /* Poseidon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26788D121A597A5500CD18DE /* Poseidon.bundle */; };
+		26788D171A597AE700CD18DE /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788D151A597AE700CD18DE /* CoreTelephony.framework */; };
+		26788D1A1A597AEE00CD18DE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788D191A597AEE00CD18DE /* SystemConfiguration.framework */; };
+		26788D1C1A597AF500CD18DE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788D1B1A597AF500CD18DE /* MobileCoreServices.framework */; };
+		26788D1E1A597AFE00CD18DE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788D1D1A597AFD00CD18DE /* MessageUI.framework */; };
+		26788D201A597B0500CD18DE /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788D1F1A597B0500CD18DE /* EventKit.framework */; };
+		26788D221A597B0C00CD18DE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788D211A597B0C00CD18DE /* AudioToolbox.framework */; };
+		26788D241A597B1400CD18DE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788D231A597B1400CD18DE /* CoreMotion.framework */; };
+		26788D261A597B1A00CD18DE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788D251A597B1A00CD18DE /* QuartzCore.framework */; };
+		26788D281A597B2000CD18DE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788D271A597B2000CD18DE /* CFNetwork.framework */; };
 		A4347489196BE8A400B49019 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4347488196BE8A400B49019 /* Foundation.framework */; };
 		A434748B196BE8A400B49019 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A434748A196BE8A400B49019 /* CoreGraphics.framework */; };
 		A434748D196BE8A400B49019 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A434748C196BE8A400B49019 /* UIKit.framework */; };
@@ -34,6 +47,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26788D0D1A597A4000CD18DE /* H5Service.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = H5Service.framework; path = "../../h5service-ios/Products/H5Service.framework"; sourceTree = "<group>"; };
+		26788D0F1A597A4900CD18DE /* Poseidon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Poseidon.framework; path = "../../poseidon-ios-copy/Products/Poseidon.framework"; sourceTree = "<group>"; };
+		26788D111A597A5500CD18DE /* H5Service.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = H5Service.bundle; path = "../../h5service-ios/Products/H5Service.framework/H5Service.bundle"; sourceTree = "<group>"; };
+		26788D121A597A5500CD18DE /* Poseidon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Poseidon.bundle; path = "../../h5service-ios/Products/H5Service.framework/Poseidon.bundle"; sourceTree = "<group>"; };
+		26788D151A597AE700CD18DE /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		26788D161A597AE700CD18DE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		26788D191A597AEE00CD18DE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		26788D1B1A597AF500CD18DE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		26788D1D1A597AFD00CD18DE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		26788D1F1A597B0500CD18DE /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		26788D211A597B0C00CD18DE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		26788D231A597B1400CD18DE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		26788D251A597B1A00CD18DE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		26788D271A597B2000CD18DE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A4347485196BE8A400B49019 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4347488196BE8A400B49019 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A434748A196BE8A400B49019 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,7 +88,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26788D281A597B2000CD18DE /* CFNetwork.framework in Frameworks */,
+				26788D261A597B1A00CD18DE /* QuartzCore.framework in Frameworks */,
+				26788D241A597B1400CD18DE /* CoreMotion.framework in Frameworks */,
+				26788D221A597B0C00CD18DE /* AudioToolbox.framework in Frameworks */,
+				26788D201A597B0500CD18DE /* EventKit.framework in Frameworks */,
+				26788D1E1A597AFE00CD18DE /* MessageUI.framework in Frameworks */,
+				26788D1C1A597AF500CD18DE /* MobileCoreServices.framework in Frameworks */,
+				26788D1A1A597AEE00CD18DE /* SystemConfiguration.framework in Frameworks */,
+				26788D171A597AE700CD18DE /* CoreTelephony.framework in Frameworks */,
 				A434748B196BE8A400B49019 /* CoreGraphics.framework in Frameworks */,
+				26788D0E1A597A4000CD18DE /* H5Service.framework in Frameworks */,
+				26788D101A597A4900CD18DE /* Poseidon.framework in Frameworks */,
 				A434748D196BE8A400B49019 /* UIKit.framework in Frameworks */,
 				A4347489196BE8A400B49019 /* Foundation.framework in Frameworks */,
 			);
@@ -83,6 +121,8 @@
 		A434747C196BE8A400B49019 = {
 			isa = PBXGroup;
 			children = (
+				26788D111A597A5500CD18DE /* H5Service.bundle */,
+				26788D121A597A5500CD18DE /* Poseidon.bundle */,
 				A434748E196BE8A400B49019 /* Test */,
 				A43474A7196BE8A400B49019 /* TestTests */,
 				A4347487196BE8A400B49019 /* Frameworks */,
@@ -102,6 +142,18 @@
 		A4347487196BE8A400B49019 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26788D271A597B2000CD18DE /* CFNetwork.framework */,
+				26788D251A597B1A00CD18DE /* QuartzCore.framework */,
+				26788D231A597B1400CD18DE /* CoreMotion.framework */,
+				26788D211A597B0C00CD18DE /* AudioToolbox.framework */,
+				26788D1F1A597B0500CD18DE /* EventKit.framework */,
+				26788D1D1A597AFD00CD18DE /* MessageUI.framework */,
+				26788D1B1A597AF500CD18DE /* MobileCoreServices.framework */,
+				26788D191A597AEE00CD18DE /* SystemConfiguration.framework */,
+				26788D151A597AE700CD18DE /* CoreTelephony.framework */,
+				26788D161A597AE700CD18DE /* CoreText.framework */,
+				26788D0F1A597A4900CD18DE /* Poseidon.framework */,
+				26788D0D1A597A4000CD18DE /* H5Service.framework */,
 				A4347488196BE8A400B49019 /* Foundation.framework */,
 				A434748A196BE8A400B49019 /* CoreGraphics.framework */,
 				A434748C196BE8A400B49019 /* UIKit.framework */,
@@ -230,8 +282,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26788D141A597A5500CD18DE /* Poseidon.bundle in Resources */,
 				A4347493196BE8A400B49019 /* InfoPlist.strings in Resources */,
 				A434749B196BE8A400B49019 /* Images.xcassets in Resources */,
+				26788D131A597A5500CD18DE /* H5Service.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,11 +424,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: BINGYE YU (7J4WZFC6KC)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/kaizi/workspace/git/h5service-ios/Products",
+					"/Users/kaizi/workspace/git/poseidon-ios-copy/Products",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
 				INFOPLIST_FILE = "Test/Test-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "df4ee73d-ee36-4f36-98e7-9c9296c48361";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -384,11 +445,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: BINGYE YU (7J4WZFC6KC)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/kaizi/workspace/git/h5service-ios/Products",
+					"/Users/kaizi/workspace/git/poseidon-ios-copy/Products",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test/Test-Prefix.pch";
 				INFOPLIST_FILE = "Test/Test-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "df4ee73d-ee36-4f36-98e7-9c9296c48361";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -452,6 +520,7 @@
 				A43474B3196BE8A400B49019 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A43474B4196BE8A400B49019 /* Build configuration list for PBXNativeTarget "TestTests" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +529,7 @@
 				A43474B6196BE8A400B49019 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -12,6 +12,5 @@
 @interface YBYTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) YBYTRootViewController *rootViewController;
 
 @end
